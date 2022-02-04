@@ -1,0 +1,11 @@
+.main-navbar > *{
+  margin: 1rem;
+  border: 1px solid black;
+  padding: 1rem;
+  text-decoration: none;
+  background-color: aquamarine;
+}
+
+.main-navbar > *:hover{
+  opacity: 0.8;
+}
