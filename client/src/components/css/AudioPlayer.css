@@ -47,6 +47,16 @@
 }
 
 .progress-bar{
-  
+  appearance: none;
+  background: crimson;
+  border-radius: 10px;
+  width: 200px;
+  height: 11px;
+  outline: none;
   /* width: 0; */
+}
+
+.progress-bar::before{
+  content: '';
+  
 }
