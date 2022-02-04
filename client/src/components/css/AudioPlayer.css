@@ -1,0 +1,52 @@
+.audio-player-container{
+  display: flex;
+  align-items: center;
+  /* width: 5rem; */
+}
+
+.forward-backward{
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  font-family: monospace;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.forward-backward:hover{
+  color: chocolate;
+}
+
+.play-pause{
+  background-color: chocolate;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  color: teal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.play{
+  position: relative;
+  left: 1px;
+}
+
+.current-time, .duration{
+  font-family: monospace;
+  font-size: 16px;
+}
+
+.current-time{
+  margin-left: 25px;
+}
+
+.progress-bar{
+  
+  /* width: 0; */
+}
