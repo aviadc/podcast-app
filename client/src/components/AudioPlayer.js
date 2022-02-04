@@ -55,7 +55,7 @@ function AudioPlayer() {
       {/*{(duration&&!isNaN(duration))&&calculateTime(duration)} */}
 
       {/* duration */}
-      <div className='duration'>{calculateTime(duration)}</div> {/*check if duration has been loaded and duration is number*/}
+      <div className='duration'>{!isNaN(duration)&&calculateTime(duration)}</div> {/*check if duration has been loaded and duration is number*/}
     </div>
   )
 }

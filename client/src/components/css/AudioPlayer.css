@@ -52,11 +52,33 @@
   border-radius: 10px;
   width: 200px;
   height: 11px;
+  position: relative;
   outline: none;
   /* width: 0; */
 }
 
 .progress-bar::before{
   content: '';
+  height: 11px;
+  width: 100%;
+  background-color: darkkhaki;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  background-color: darkslateblue;
+  border-radius: 50%;
   
+  cursor: pointer;
+ position: relative;
+ z-index: 4;
 }
