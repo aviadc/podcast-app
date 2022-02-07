@@ -19,29 +19,38 @@ function AddCollection() {
     navigate('/profile');
   }
 
-  const uploadImage = async ()=>{
+  const uploadImage = async (collectionId)=>{
     const data = new FormData();
     data.append('image',imageFile);
     try{
-     const imgData = await podcastApi.post(`${state._id}/upload/audio`,data);
+     const imgData = await podcastApi.post(`${collectionId}/upload/audio`,data);
      console.log(imgData.data)
     }catch(e){
       console.log(e)
     }
   }
 
-  const uploadAudio = async ()=>{
+  const uploadAudio = async (collectionId)=>{
     // console.log(audioFiles);
     const data = new FormData();
     audioFiles.forEach((audio)=>{
       data.append('audio',audio);
     })
     try{
-     const audioData = await podcastApi.post(`${state._id}/upload/audio`,data);
+     const audioData = await podcastApi.post(`${collectionId}/upload/audio`,data);
      console.log(audioData.data);
     //  setAudiolink(audioData.data.Location);
     }catch(e){
       console.log(e)
+    }
+  }
+
+  const uploadTitle = async ()=>{
+    try{
+      const {data} = await podcastApi.post(`${state._id}/upload/title`,{title:collectionTitle});
+      return data;
+    }catch(e){
+      return null
     }
   }
 
@@ -59,10 +68,17 @@ function AddCollection() {
     setCollectionTitle(e.target.value);
   }
   
-  const uploadCollection = ()=>{
-    if(!validDetails()){
-      setErrorMessage('missing details');
-      return
+  const uploadCollection = async ()=>{
+    // if(!validDetails()){
+    //   setErrorMessage('missing details');
+    //   return
+    // }
+    try{
+      const id = await uploadTitle();
+      await uploadImage(id);
+      await uploadAudio(id);
+    }catch(e){
+      console.log(e)
     }
 
   }

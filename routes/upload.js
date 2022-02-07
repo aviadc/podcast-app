@@ -58,9 +58,8 @@ router.post('/:id/upload/image',uploadImage.single('image'),async (req,res)=>{
             width: 250,
             height: 250
         }).toBuffer();
-        const img = new PodcastCollection({image: buffer});
-        img.save();
-        res.send('hey dude');
+        const imgUpdate = await PodcastCollection.findOneAndUpdate({_id:req.params.id},{image: buffer},{new:true});
+        res.send(imgUpdate);
      
     }catch(e){
         res.status(404).send(e.message)
@@ -75,7 +74,7 @@ router.post('/:id/upload/image',uploadImage.single('image'),async (req,res)=>{
       try{
          const arr = await Promise.all(req.files.map(async (file)=>{
             const link = await uploadAudio(file.originalname,bucket,file.buffer);
-            return link;
+            return link.Location;
         })); 
         res.send(arr);
         //   console.log('data');
@@ -83,6 +82,18 @@ router.post('/:id/upload/image',uploadImage.single('image'),async (req,res)=>{
           console.log('error')
           res.send(e);
       }
+  },(error,req,res,next)=>{
+    res.status(409).send({ error: error.message })
+  })
+
+    .post('/:id/upload/title',async(req,res)=>{
+        try{
+            const collection = new PodcastCollection({user: req.params.id,title:req.body.title});
+            const data = await collection.save()
+            res.send(data);
+        }catch(e){
+            res.status(400).send(e);
+        }
   })
   
   
