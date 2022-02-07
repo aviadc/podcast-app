@@ -23,7 +23,7 @@ function AddCollection() {
     const data = new FormData();
     data.append('image',imageFile);
     try{
-     const imgData = await podcastApi.post(`${collectionId}/upload/audio`,data);
+     const imgData = await podcastApi.post(`${collectionId}/upload/image`,data);
      console.log(imgData.data)
     }catch(e){
       console.log(e)
@@ -74,9 +74,10 @@ function AddCollection() {
     //   return
     // }
     try{
-      const id = await uploadTitle();
-      await uploadImage(id);
-      await uploadAudio(id);
+      const {_id} = await uploadTitle();
+      const imgData = await uploadImage(_id);
+      console.log(imgData);
+      // await uploadAudio(id);
     }catch(e){
       console.log(e)
     }
