@@ -7,6 +7,7 @@ function AddCollection() {
   const [imageFile,setImageFile] = useState(null);
   const [audioFiles,setAudioFiles] = useState(null);
   const [collectionTitle,setCollectionTitle] = useState('');
+  const [errorMessage,setErrorMessage] = useState(null);
 
   
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ function AddCollection() {
     const data = new FormData();
     data.append('image',imageFile);
     try{
-     const imgData = await podcastApi.post('upload/image',data);
+     const imgData = await podcastApi.post(`${state._id}/upload/audio`,data);
      console.log(imgData.data)
     }catch(e){
       console.log(e)
@@ -36,7 +37,7 @@ function AddCollection() {
       data.append('audio',audio);
     })
     try{
-     const audioData = await podcastApi.post('upload/audio',data);
+     const audioData = await podcastApi.post(`${state._id}/upload/audio`,data);
      console.log(audioData.data);
     //  setAudiolink(audioData.data.Location);
     }catch(e){
@@ -57,6 +58,18 @@ function AddCollection() {
   const titleChange = (e)=>{
     setCollectionTitle(e.target.value);
   }
+  
+  const uploadCollection = ()=>{
+    if(!validDetails()){
+      setErrorMessage('missing details');
+      return
+    }
+
+  }
+
+  const validDetails = ()=>{
+    return imageFile&&audioFiles&&collectionTitle;
+  }
 
 
 
@@ -65,18 +78,19 @@ function AddCollection() {
      <h1> welcome to add collection</h1>
       <div>
        IMAGE <input type="file" onChange={fileImageChange}/>
-        <button onClick={uploadImage}>submit</button>
+        {/* <button onClick={uploadImage}>submit</button> */}
       </div>
       <div>
        AUDIO <input type="file" multiple onChange={fileAudioChange} accept='audio/*'/>
-        <button onClick={uploadAudio}>submit</button>
+        {/* <button onClick={uploadAudio}>submit</button> */}
       </div>
       <div>
         collection name <input type='text' onChange={titleChange} />
-        <button>ADD</button>
+        <div>
+          <button onClick={uploadCollection}>ADD COLLECTION</button>
+        </div>
       </div>
-      {/* <AudioPlayer audioLink={audioLink} /> */}
-      <br /> <br /> <br /> <br />
+      <div>{errorMessage}</div>
       
     <button onClick={handleBackToProfile}>back to profile</button>
     </div>

@@ -51,7 +51,7 @@ const uploadImage = multer({
 })
 
 
-router.post('/upload/image',uploadImage.single('image'),async (req,res)=>{
+router.post('/:id/upload/image',uploadImage.single('image'),async (req,res)=>{
     console.log('im in post express')
     try{
         const buffer = await sharp(req.file.buffer).resize({
@@ -69,8 +69,8 @@ router.post('/upload/image',uploadImage.single('image'),async (req,res)=>{
     res.status(409).send({ error: error.message })
   })
 
-  .post('/upload/audio',upload.array('audio',10),async (req,res)=>{
-      console.log('in post');
+  .post('/:id/upload/audio',upload.array('audio',10),async (req,res)=>{
+      console.log(req.params);
     //   const arr = [];
       try{
          const arr = await Promise.all(req.files.map(async (file)=>{
