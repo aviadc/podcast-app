@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 
 
 const PodcastCollectionSchema = new mongoose.Schema({
+  user:{
+    type: mongoose.ObjectId
+  },
   image:{
       type: Buffer
   },
@@ -11,6 +14,9 @@ const PodcastCollectionSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
+  },
+  details:{
+    type: String
   }
 });
 

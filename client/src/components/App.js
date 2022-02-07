@@ -7,6 +7,7 @@ import Login from "./Login";
 import About from "./About";
 import Profile from "./Profile";
 import Register from "./Register";
+import AddCollection from "./AddCollection";
 
 
 
@@ -24,6 +25,7 @@ const App = ()=>{
           <Route path="/about" element={<About />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/addCollection" element={<AddCollection />} />
         </Routes>
       </BrowserRouter>
     </div>

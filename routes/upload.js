@@ -69,11 +69,18 @@ router.post('/upload/image',uploadImage.single('image'),async (req,res)=>{
     res.status(409).send({ error: error.message })
   })
 
-  .post('/upload/audio',upload.single('audio'),async (req,res)=>{
+  .post('/upload/audio',upload.array('audio',10),async (req,res)=>{
+      console.log('in post');
+    //   const arr = [];
       try{
-          const link = await uploadAudio('filename2',bucket,req.file.buffer);
-          res.send(link);
+         const arr = await Promise.all(req.files.map(async (file)=>{
+            const link = await uploadAudio(file.originalname,bucket,file.buffer);
+            return link;
+        })); 
+        res.send(arr);
+        //   console.log('data');
       }catch(e){
+          console.log('error')
           res.send(e);
       }
   })

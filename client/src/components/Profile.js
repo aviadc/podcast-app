@@ -8,7 +8,7 @@ import AudioPlayer from './AudioPlayer';
 
 
 function Profile() {
-  const [name,setName] = useState('');
+  const [profileData,setProfileData] = useState('');
   const[loggedIn,setLoggedIn] = useState(false);
   const [imageFile,setImageFile] = useState(null);
   const [audioFile,setAudioFile] = useState(null);
@@ -26,7 +26,7 @@ function Profile() {
           'auth-token': localStorage.getItem('token')
         }
       });
-      setName(data.name);
+     setProfileData(data)
       setLoggedIn(true);
     }catch(e){
       console.log(e);
@@ -69,56 +69,28 @@ function Profile() {
   //   }
   // }
 
-  const fileImageChange = (e)=>{
-    const file = e.target.files[0];
-    setImageFile(file);
+  
+  
+  const displayCollections = ()=>{
+
   }
 
-  const fileAudioChange = (e)=>{
-    const file = e.target.files[0];
-    setAudioFile(file);
-  }
-
-  const uploadImage = async ()=>{
-    const data = new FormData();
-    data.append('image',imageFile);
-    try{
-     const imgData = await podcastApi.post('upload/image',data);
-     console.log(imgData.data)
-    }catch(e){
-      console.log(e)
-    }
-  }
-
-  const uploadAudio = async ()=>{
-    const data = new FormData();
-    data.append('audio',audioFile);
-    try{
-     const audioData = await podcastApi.post('upload/audio',data);
-     console.log(audioData.data.Location);
-     setAudiolink(audioData.data.Location);
-    }catch(e){
-      console.log(e)
-    }
+  const addCollectionHandlre = ()=>{
+    navigate('/addCollection',{state:profileData});
   }
 
   return(
     <div>
       <MainNavbar />
       <h1>Profile</h1>
-      <h2>{`WELCOME ${name}`}</h2>
-      <div>
-       IMAGE <input type="file" onChange={fileImageChange}/>
-        <button onClick={uploadImage}>submit</button>
-        <br /> <br /> <br /> <br />
-      </div>
-      <div>
-       AUDIO <input type="file" onChange={fileAudioChange}/>
-        <button onClick={uploadAudio}>submit</button>
-        <br /> <br /> <br /> <br />
-      </div>
-      <AudioPlayer audioLink={audioLink} />
-      <br /> <br /> <br /> <br />
+      <h2>{`WELCOME ${profileData.name}`}</h2>
+     
+        <div>
+          <button onClick={addCollectionHandlre}>add collection</button>
+        </div>
+        <div>
+          collections: {displayCollections()}
+        </div>
       <button onClick={logout}>log out</button>
     </div>
   ) 
