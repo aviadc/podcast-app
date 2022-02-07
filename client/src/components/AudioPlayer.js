@@ -6,7 +6,7 @@ import {FaPlay} from "react-icons/fa"
 import {FaPause} from "react-icons/fa"
 
 
-function AudioPlayer() {
+function AudioPlayer(props) {
   // state
   const [isPlaying,setIsPlaying] = useState(false);
   const [duration,setDuration] = useState(0);
@@ -67,10 +67,11 @@ function AudioPlayer() {
     changeRange()
   }
 
+  //' https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'
 
   return (
     <div className='audio-player-container'>
-      <audio ref={audioPlayer} src=' https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' preload='metadata'></audio>
+      <audio ref={audioPlayer} src={props.audioLink} preload='metadata'></audio>
       <button className='forward-backward' onClick={backThirty}>30 <AiOutlineArrowLeft /></button>
       <button onClick={togglePlayPause} className='play-pause' >{isPlaying ? <FaPause /> : <FaPlay className='play' />}</button>
       <button className='forward-backward' onClick={forwardThirty}><AiOutlineArrowRight /> 30</button>
