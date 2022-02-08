@@ -72,10 +72,10 @@ function AddCollection() {
   }
   
   const uploadCollection = async ()=>{
-    // if(!validDetails()){
-    //   setMessageToUser('missing details');
-    //   return
-    // }
+    if(!validDetails()){
+      setMessageToUser('missing details');
+      return
+    }
     try{
       setIsLoading(true);
       setMessageToUser('');
