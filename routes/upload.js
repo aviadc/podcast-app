@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const PodcastCollection = require('../models/PodcastCollection');
+const {PodcastCollection,PodcastItem} = require('../models/PodcastCollection');
 const AWS = require('aws-sdk');
 const multer = require('multer');
 const sharp = require('sharp');
@@ -75,7 +75,7 @@ router.post('/:id/upload/image',uploadImage.single('image'),async (req,res)=>{
         const collection = await PodcastCollection.findById(req.params.id);
         const arr = await Promise.all(req.files.map(async (file)=>{
             const audioData = await uploadAudio(`${collection.title}_${file.originalname}`,bucket,file.buffer);
-            collection.podcasts.push({audioTitle: audioData.Key,audioLink: audioData.Location});
+            collection.podcasts.push(new PodcastItem({title: audioData.Key,audioLink: audioData.Location}));
         })); 
         res.status(200).send(collection);
         //   console.log('data');

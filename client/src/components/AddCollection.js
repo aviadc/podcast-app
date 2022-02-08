@@ -84,8 +84,8 @@ function AddCollection() {
       if(!data){
         throw new Error('title error');
       }
-      // const imgData = await uploadImage(data._id);
-      // const audioData = await uploadAudio(data._id)
+      const imgData = await uploadImage(data._id);
+      const audioData = await uploadAudio(data._id)
       setIsLoading(false);
       setMessageToUser('upload successfully ');
     }catch(e){

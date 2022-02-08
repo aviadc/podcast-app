@@ -17,7 +17,7 @@ const PodcastCommentSchema = new mongoose.Schema({
 
 })
 
-const podcastItemSchema = new mongoose.Schema({
+const PodcastItemSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -42,7 +42,7 @@ const PodcastCollectionSchema = new mongoose.Schema({
       type: Buffer
   },
   podcasts:{
-    type: [podcastItemSchema],
+    type: [PodcastItemSchema],
   },
   title: {
     type: String,
@@ -53,4 +53,8 @@ const PodcastCollectionSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('PodcastCollection',PodcastCollectionSchema);
+const PodcastCollection = mongoose.model('PodcastCollection',PodcastCollectionSchema);
+const PodcastItem = mongoose.model('PodcastItem',PodcastItemSchema);
+const PodcastComment = mongoose.model('PodcastComment',PodcastCommentSchema);
+
+module.exports = {PodcastCollection,PodcastItem,PodcastComment}
