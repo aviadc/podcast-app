@@ -89,11 +89,15 @@ router.post('/:id/upload/image',uploadImage.single('image'),async (req,res)=>{
 
     .post('/:id/upload/title',async(req,res)=>{
         try{
+            const duplicatTitle = await PodcastCollection.findOne({title: req.body.title});
+            if(duplicatTitle){
+                throw new Error('title error');
+            }
             const collection = new PodcastCollection({user: req.params.id,title:req.body.title});
             const data = await collection.save()
             res.send(data);
         }catch(e){
-            res.status(400).send(e);
+            res.status(400).send(e.message);
         }
   })
   

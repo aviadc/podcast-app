@@ -1,13 +1,16 @@
 import React ,{useState} from 'react';
 import { useNavigate,useLocation } from "react-router-dom";
 import podcastApi from './Api';
+import Spinner from './Spinner';
+
 
 function AddCollection() {
 
   const [imageFile,setImageFile] = useState(null);
   const [audioFiles,setAudioFiles] = useState(null);
   const [collectionTitle,setCollectionTitle] = useState('');
-  const [errorMessage,setErrorMessage] = useState(null);
+  const [messageToUser,setMessageToUser] = useState(null);
+  const [isLoading,setIsLoading] = useState(false);
 
   
   const navigate = useNavigate();
@@ -70,16 +73,25 @@ function AddCollection() {
   
   const uploadCollection = async ()=>{
     // if(!validDetails()){
-    //   setErrorMessage('missing details');
+    //   setMessageToUser('missing details');
     //   return
     // }
     try{
-      const {_id} = await uploadTitle();
-      const imgData = await uploadAudio(_id);
-      console.log(imgData);
-      // await uploadAudio(id);
+      setIsLoading(true);
+      setMessageToUser('');
+      const data = await uploadTitle();
+      console.log(data);
+      if(!data){
+        throw new Error('title error');
+      }
+      // const imgData = await uploadImage(data._id);
+      // const audioData = await uploadAudio(data._id)
+      setIsLoading(false);
+      setMessageToUser('upload successfully ');
     }catch(e){
+      setIsLoading(false);
       console.log(e.message)
+      setMessageToUser(e.message);
     }
 
   }
@@ -107,7 +119,8 @@ function AddCollection() {
           <button onClick={uploadCollection}>ADD COLLECTION</button>
         </div>
       </div>
-      <div>{errorMessage}</div>
+      <div className='add-collection-spiner'>{isLoading? <Spinner/> : null }</div>
+      <div>{messageToUser}</div>
       
     <button onClick={handleBackToProfile}>back to profile</button>
     </div>
