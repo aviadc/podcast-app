@@ -10,7 +10,7 @@ const PodcastCollectionSchema = new mongoose.Schema({
       type: Buffer
   },
   podcasts:{
-    type: [{name: String,audio: String}],
+    type: Array,
   },
   title: {
     type: String,

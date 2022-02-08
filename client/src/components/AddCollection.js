@@ -75,11 +75,11 @@ function AddCollection() {
     // }
     try{
       const {_id} = await uploadTitle();
-      const imgData = await uploadImage(_id);
+      const imgData = await uploadAudio(_id);
       console.log(imgData);
       // await uploadAudio(id);
     }catch(e){
-      console.log(e)
+      console.log(e.message)
     }
 
   }

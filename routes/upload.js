@@ -72,15 +72,16 @@ router.post('/:id/upload/image',uploadImage.single('image'),async (req,res)=>{
       console.log(req.params);
     //   const arr = [];
       try{
-         const arr = await Promise.all(req.files.map(async (file)=>{
-            const link = await uploadAudio(file.originalname,bucket,file.buffer);
-            return link.Location;
+        const collection = await PodcastCollection.findById(req.params.id);
+        const arr = await Promise.all(req.files.map(async (file)=>{
+            const audioData = await uploadAudio(`${collection.title}_${file.originalname}`,bucket,file.buffer);
+            collection.podcasts.push({audioTitle: audioData.Key,audioLink: audioData.Location});
         })); 
-        res.send(arr);
+        res.status(200).send(collection);
         //   console.log('data');
       }catch(e){
           console.log('error')
-          res.send(e);
+          res.status(400).send(e.message);
       }
   },(error,req,res,next)=>{
     res.status(409).send({ error: error.message })
