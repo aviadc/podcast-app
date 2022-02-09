@@ -103,16 +103,26 @@ function Profile() {
   return(
     <div>
       <MainNavbar />
-      <h1>Profile</h1>
-      <h2> WELCOME {profileData? profileData.name : null}</h2>
-     
-        <div>
-          <button onClick={addCollectionHandlre}>add collection</button>
+      <div className='profile-container'>
+        <div className='profile-inner'>
+          <div className='profile-inner-top'>
+
+          </div>
+          <h1>Profile</h1>
+          <h2> WELCOME {profileData? profileData.name : null}</h2>
+        
+            <div>
+              <button onClick={addCollectionHandlre}>add collection</button>
+            </div>
+            <div>
+            <button onClick={logout}>log out</button>
+            </div>
+            <div className='profile-collections'>
+              collections: {collectionsList.length>0? displayCollections() : null}
+            </div>
+          
         </div>
-        <div>
-          collections: {collectionsList.length>0? displayCollections() : null}
-        </div>
-      <button onClick={logout}>log out</button>
+      </div>
     </div>
   ) 
 }

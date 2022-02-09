@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "../css/navbar.css"
+import logo from '../../img/brandPodco.JPG'
 
 function MainNavbar() {
   return <div>
     <nav className='main-navbar'>
       <div className='main-navbar-inner-brand'>
-        <div></div>
+        <img src={logo} alt='logo' height='90%' />
       </div>
       <div className='main-navbar-inner-links' >
         <Link to="/">HOME</Link>

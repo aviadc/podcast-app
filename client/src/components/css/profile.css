@@ -1,0 +1,19 @@
+.profile-container{
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-inner{
+  border: 1px solid green;
+  width: 70vw;
+  height: 80vh;
+}
+
+.profile-collections{
+  border: 1px solid red;
+  display: flex;
+  flex-wrap: wrap;
+  height: 80%;
+  
+}

@@ -2,12 +2,34 @@
   display: flex;
   justify-content: space-between;
   height: 10vh;
-  background-color: grey;
+  background-color: black;
   color: white;
+  font-size: 1.6rem;
 }
 
-.main-navbar > *:hover{
-  opacity: 0.8;
+.main-navbar-inner-links{
+  /* border: 1px solid green; */
+  width: 40%;
+  display: flex;
+}
+
+.main-navbar-inner-links > *:hover{
+  color: #C0643A;
+}
+
+.main-navbar-inner-links >*{
+  margin: 1rem;
+  text-decoration: none;
+  color: #fff;
+  /* border: 1px solid white; */
+  
+}
+
+.main-navbar-inner-brand{
+  /* border: 1px solid white; */
+  width: 10%;
+  display: flex;
+  justify-content: center;
 }
 /* 
 margin: 1rem;
