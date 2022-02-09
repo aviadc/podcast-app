@@ -2,6 +2,7 @@ import React ,{useState} from 'react';
 import { useNavigate,useLocation } from "react-router-dom";
 import podcastApi from '../Api';
 import Spinner from '../Spinner';
+import '../css/addCollection.css'
 
 
 function AddCollection() {
@@ -15,7 +16,7 @@ function AddCollection() {
   
   const navigate = useNavigate();
   const {state} = useLocation();
-  // console.log(dataFromProfile);
+  
 
 
   const handleBackToProfile = ()=>{
@@ -103,26 +104,27 @@ function AddCollection() {
 
 
   return (
-    <div>
-     <h1> welcome to add collection</h1>
-      <div>
-       IMAGE <input type="file" onChange={fileImageChange}/>
-        {/* <button onClick={uploadImage}>submit</button> */}
+    <div className='add-collection-container'>
+      <div className='add-collection-inner'>
+        <h2>add a collection</h2>
+          <div>
+          ADD IMAGE <input type="file" onChange={fileImageChange}/>
+          </div>
+          <div>
+          ADD AUDIO <input type="file" multiple onChange={fileAudioChange} accept='audio/*'/>
+          </div>
+          <div>
+            collection name: <input type='text' onChange={titleChange} />
+          </div>
+          <div>
+            <button onClick={uploadCollection}>ADD COLLECTION</button>
+          </div>
+          <div className='add-collection-spiner'>{isLoading? <Spinner/> : null }</div>
+          <div>{messageToUser}</div>
+          <div>
+            <button onClick={handleBackToProfile}>back to profile</button>
+          </div>
       </div>
-      <div>
-       AUDIO <input type="file" multiple onChange={fileAudioChange} accept='audio/*'/>
-        {/* <button onClick={uploadAudio}>submit</button> */}
-      </div>
-      <div>
-        collection name <input type='text' onChange={titleChange} />
-        <div>
-          <button onClick={uploadCollection}>ADD COLLECTION</button>
-        </div>
-      </div>
-      <div className='add-collection-spiner'>{isLoading? <Spinner/> : null }</div>
-      <div>{messageToUser}</div>
-      
-    <button onClick={handleBackToProfile}>back to profile</button>
     </div>
   ) 
 }

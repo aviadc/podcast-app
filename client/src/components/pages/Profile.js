@@ -105,20 +105,19 @@ function Profile() {
       <MainNavbar />
       <div className='profile-container'>
         <div className='profile-inner'>
-          <div className='profile-inner-top'>
-
+          <div className='profile-inner-top-container'>
+            <div className='profile-inner-top'>
+              <h2 className='profile-inner-top-welcome'> WELCOME {profileData? profileData.name : null}</h2>
+              <div>
+                <button onClick={addCollectionHandlre}>add collection</button>
+              </div>
+              <div>
+              <button onClick={logout}>log out</button>
+              </div>
+            </div>
           </div>
-          <h1>Profile</h1>
-          <h2> WELCOME {profileData? profileData.name : null}</h2>
-        
-            <div>
-              <button onClick={addCollectionHandlre}>add collection</button>
-            </div>
-            <div>
-            <button onClick={logout}>log out</button>
-            </div>
             <div className='profile-collections'>
-              collections: {collectionsList.length>0? displayCollections() : null}
+              {collectionsList.length>0? displayCollections() : null}
             </div>
           
         </div>

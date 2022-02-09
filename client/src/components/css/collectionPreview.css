@@ -1,8 +1,17 @@
 .collection-preview{
-  height: 20vh;
-  width: 15vh;
+  height: 35vh;
+  width: 27vh;
   border: 1px solid red;
   margin: 1rem;
-  cursor: pointer;
-  
+  cursor: pointer; 
+}
+
+.collection-preview-img{
+  border: 1px solid red;
+  height: 80%;
+  width: 100%;
+}
+
+.collection-preview-title{
+  text-align: center;
 }

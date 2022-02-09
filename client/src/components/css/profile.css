@@ -1,5 +1,5 @@
 .profile-container{
-  height: 90vh;
+  min-height: 90vh;
   display: flex;
   justify-content: center;
 }
@@ -7,7 +7,7 @@
 .profile-inner{
   border: 1px solid green;
   width: 70vw;
-  height: 80vh;
+  min-height: 80vh;
 }
 
 .profile-collections{
@@ -16,4 +16,38 @@
   flex-wrap: wrap;
   height: 80%;
   
+}
+
+.profile-inner-top-container{
+  height: 20%;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-inner-top{
+  height: 100%;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid fuchsia;
+  font-size: 1.6rem;
+}
+
+.profile-inner-top button{
+  font-size: 1.6rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
+}
+
+.profile-inner-top button:hover{
+  color: #C0643A;
+}
+
+.profile-inner-top-welcome{
+  border: 1px solid navy;
+  width: 40%;
 }

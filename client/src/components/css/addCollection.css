@@ -1,0 +1,40 @@
+.add-collection-container{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.add-collection-inner{
+  margin-top: 2rem;
+  width: 70vh;
+  border: 1px solid firebrick;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 2rem;
+}
+
+.add-collection-inner div,h2{
+  width: 70%;
+}
+
+.add-collection-inner button{
+  font-size: 1.6rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
+}
+
+.add-collection-inner button:hover{
+  color: #C0643A;
+}
+
+.add-collection-inner input{
+  font-size: 1.6rem;
+}
