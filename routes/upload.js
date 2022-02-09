@@ -10,7 +10,7 @@ const { Promise } = require('mongoose');
 
 dotenv.config();
 
-const bucket = 'aviadc-aws-bucket-1';
+const bucket = process.env.BUCKET_NAME;
 const s3 = new AWS.S3({
     accessKeyId: process.env.ACCESS_KEY_ID ,
     secretAccessKey: process.env.SECRET_ACCESS_KEY
@@ -33,11 +33,31 @@ const uploadAudio =(filename,bucketname, file)=>{
                }
             })
     })
+}
+
+
+const uploadImage =(filename,bucketname, file)=>{
+    return new Promise((res,rej)=>{
+        const params = {
+            Key: filename,
+            Bucket: bucketname,
+            Body: file,
+            ContentType: 'image/jpeg',
+            ACL: 'public-read'
+        }
+       s3.upload(params,(err,data)=>{
+               if(err){
+                  rej(err);
+               }else{
+                   res(data);
+               }
+            })
+    })
     
    
 }
 
-const uploadImage = multer({
+const uploadImageMulter = multer({
     limits: {
         fileSize: 4000000
     },
@@ -51,15 +71,22 @@ const uploadImage = multer({
 })
 
 
-router.post('/:id/upload/image',uploadImage.single('image'),async (req,res)=>{
+
+
+router.post('/:id/upload/image',uploadImageMulter.single('image'),async (req,res)=>{
     console.log('im in post express')
     try{
-        const buffer = await sharp(req.file.buffer).resize({
-            width: 250,
-            height: 250
-        }).toBuffer();
-        const imgUpdate = await PodcastCollection.findOneAndUpdate({_id:req.params.id},{image: buffer},{new:true});
-        res.send(imgUpdate);
+        // const buffer = await sharp(req.file.buffer).resize({
+        //     width: 250,
+        //     height: 250
+        // }).toBuffer();
+        // const imgUpdate = await PodcastCollection.findOneAndUpdate({_id:req.params.id},{image: buffer},{new:true});
+        // res.send(imgUpdate);
+        const collection = await PodcastCollection.findById(req.params.id);
+        console.log('after collection');
+        const imageData = await uploadImage(`${collection.title}_${req.file.originalname}`,bucket,req.file.buffer);
+        await collection.update({image: imageData.Location},{new:true}); 
+        res.send(collection);
      
     }catch(e){
         res.status(404).send(e.message)

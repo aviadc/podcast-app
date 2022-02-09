@@ -4,15 +4,19 @@ import jwt from 'jsonwebtoken';
 import podcastApi from './Api';
 import MainNavbar from './navabrs/MainNavbar';
 import AudioPlayer from './AudioPlayer';
+import PodcastPreview from './PodcastPreview';
+
+
 
 
 
 function Profile() {
-  const [profileData,setProfileData] = useState('');
-  const[loggedIn,setLoggedIn] = useState(false);
-  const [imageFile,setImageFile] = useState(null);
-  const [audioFile,setAudioFile] = useState(null);
-  const [audioLink,setAudiolink] = useState('');
+  const [profileData,setProfileData] = useState(null);
+  const [loggedIn,setLoggedIn] = useState(false);
+  const [collectionsList,setCollectionsList] = useState([]);
+  // const [imageFile,setImageFile] = useState(null);
+  // const [audioFile,setAudioFile] = useState(null);
+  // const [audioLink,setAudiolink] = useState('');
 
 
 
@@ -26,29 +30,40 @@ function Profile() {
           'auth-token': localStorage.getItem('token')
         }
       });
-     setProfileData(data)
+      setProfileData(data)
+      const dataArr = await podcastApi.get(`/${data._id}/podcasts`);
+      setCollectionsList(dataArr.data);
       setLoggedIn(true);
+      
     }catch(e){
       console.log(e);
     }
   }
+
+
+  
+  
   useEffect(()=>{
-    const token = localStorage.getItem('token');
-    if(token){
-      const user = jwt.decode(token);
-      if(!user){
-        localStorage.removeItem('token');
-        navigate('/login');
-      }else{
-        console.log(loggedIn);
-        if(!loggedIn){
-          getUserDetails();
+    async function innerUseEffect(){
+      const token = localStorage.getItem('token');
+      if(token){
+        const user = jwt.decode(token);
+        if(!user){
+          localStorage.removeItem('token');
+          navigate('/login');
+        }else{
+          console.log(loggedIn);
+          if(!loggedIn){
+            getUserDetails();
+          }
         }
+      }else{
+        navigate('/login');
       }
-    }else{
-      navigate('/login');
+     
     }
-  }
+    innerUseEffect();
+    }
   ,[navigate,loggedIn]);
 
   const logout = ()=>{
@@ -71,25 +86,36 @@ function Profile() {
 
   
   
-  const displayCollections = ()=>{
+  const displayCollections =()=>{
+    return collectionsList.map((collection)=>{
+      return <div key={Math.random()}>
+        <PodcastPreview imgUrl='' title={collection.title} />
+      </div>
+    })
+    }
 
-  }
+    
+  
 
   const addCollectionHandlre = ()=>{
+    console.log(profileData);
     navigate('/addCollection',{state:profileData});
+  }
+  const welcome = ()=>{
+    return 'dudu';
   }
 
   return(
     <div>
       <MainNavbar />
       <h1>Profile</h1>
-      <h2>{`WELCOME ${profileData.name}`}</h2>
+      <h2> WELCOME {profileData? profileData.name : null}</h2>
      
         <div>
           <button onClick={addCollectionHandlre}>add collection</button>
         </div>
         <div>
-          collections: {displayCollections()}
+          collections: {collectionsList.length>0? displayCollections() : null}
         </div>
       <button onClick={logout}>log out</button>
     </div>
