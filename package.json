@@ -23,5 +23,13 @@
     "nodemon": "^2.0.15",
     "path": "^0.12.7",
     "sharp": "^0.30.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aviadc/podcast-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aviadc/podcast-project/issues"
+  },
+  "homepage": "https://github.com/aviadc/podcast-project#readme"
 }
