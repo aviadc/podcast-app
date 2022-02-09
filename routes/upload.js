@@ -76,12 +76,6 @@ const uploadImageMulter = multer({
 router.post('/:id/upload/image',uploadImageMulter.single('image'),async (req,res)=>{
     console.log('im in post express')
     try{
-        // const buffer = await sharp(req.file.buffer).resize({
-        //     width: 250,
-        //     height: 250
-        // }).toBuffer();
-        // const imgUpdate = await PodcastCollection.findOneAndUpdate({_id:req.params.id},{image: buffer},{new:true});
-        // res.send(imgUpdate);
         const collection = await PodcastCollection.findById(req.params.id);
         console.log('after collection');
         const imageData = await uploadImage(`${collection.title}_${req.file.originalname}`,bucket,req.file.buffer);
@@ -104,6 +98,7 @@ router.post('/:id/upload/image',uploadImageMulter.single('image'),async (req,res
             const audioData = await uploadAudio(`${collection.title}_${file.originalname}`,bucket,file.buffer);
             collection.podcasts.push(new PodcastItem({title: audioData.Key,audioLink: audioData.Location}));
         })); 
+        await collection.save();
         res.status(200).send(collection);
         //   console.log('data');
       }catch(e){
