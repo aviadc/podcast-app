@@ -18,8 +18,8 @@
   font-size: 2rem;
 }
 
-.add-collection-inner div,h2{
-  width: 70%;
+.add-collection-inner-input-div{
+  width: 90%;
 }
 
 .add-collection-inner button{

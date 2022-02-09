@@ -107,19 +107,21 @@ function AddCollection() {
     <div className='add-collection-container'>
       <div className='add-collection-inner'>
         <h2>add a collection</h2>
-          <div>
+          <div className='add-collection-inner-input-div'>
           ADD IMAGE <input type="file" onChange={fileImageChange}/>
           </div>
-          <div>
+          <div className='add-collection-inner-input-div'>
           ADD AUDIO <input type="file" multiple onChange={fileAudioChange} accept='audio/*'/>
           </div>
-          <div>
+          <div className='add-collection-inner-input-div'>
             collection name: <input type='text' onChange={titleChange} />
           </div>
           <div>
             <button onClick={uploadCollection}>ADD COLLECTION</button>
           </div>
-          <div className='add-collection-spiner'>{isLoading? <Spinner/> : null }</div>
+          <div>
+            {isLoading? <Spinner/> : null }
+          </div>
           <div>{messageToUser}</div>
           <div>
             <button onClick={handleBackToProfile}>back to profile</button>
