@@ -10,7 +10,7 @@ function CollectionPreview(props) {
   const handleClick = ()=>{
     navigate('/Collection',{state:props});
   }
-
+  
   return (
     <div className='collection-preview' onClick={handleClick} >
       <div>

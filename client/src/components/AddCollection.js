@@ -27,7 +27,7 @@ function AddCollection() {
     data.append('image',imageFile);
     try{
      const imgData = await podcastApi.post(`${collectionId}/upload/image`,data);
-     console.log(imgData.data)
+    //  console.log(imgData.data)
     }catch(e){
       console.log(e)
     }
@@ -41,7 +41,7 @@ function AddCollection() {
     })
     try{
      const audioData = await podcastApi.post(`${collectionId}/upload/audio`,data);
-     console.log(audioData.data);
+    //  console.log(audioData.data);
     //  setAudiolink(audioData.data.Location);
     }catch(e){
       console.log(e)
@@ -80,7 +80,7 @@ function AddCollection() {
       setIsLoading(true);
       setMessageToUser('');
       const data = await uploadTitle();
-      console.log(data);
+      // console.log(data);
       if(!data){
         throw new Error('title error');
       }

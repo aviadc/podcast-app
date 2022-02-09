@@ -27,6 +27,7 @@ function Profile() {
       });
       setProfileData(data)
       const dataArr = await podcastApi.get(`/${data._id}/podcasts`);
+      console.log(dataArr,'dataArr');
       setCollectionsList(dataArr.data);
       setLoggedIn(true);
       
@@ -84,7 +85,7 @@ function Profile() {
   const displayCollections =()=>{
     return collectionsList.map((collection)=>{
       return <div key={Math.random()}>
-        <CollectionPreview imgUrl={collection.imgUrl} title={collection.title} />
+        <CollectionPreview imgUrl={collection.imgUrl} title={collection.title} podcasts={collection.podcasts} />
       </div>
     })
     }
@@ -96,9 +97,7 @@ function Profile() {
     console.log(profileData);
     navigate('/addCollection',{state:profileData});
   }
-  const welcome = ()=>{
-    return 'dudu';
-  }
+  
 
   return(
     <div>
