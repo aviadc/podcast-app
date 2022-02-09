@@ -85,7 +85,7 @@ router.post('/:id/upload/image',uploadImageMulter.single('image'),async (req,res
         const collection = await PodcastCollection.findById(req.params.id);
         console.log('after collection');
         const imageData = await uploadImage(`${collection.title}_${req.file.originalname}`,bucket,req.file.buffer);
-        await collection.update({image: imageData.Location},{new:true}); 
+        await collection.updateOne({imgUrl: imageData.Location},{new:true}); 
         res.send(collection);
      
     }catch(e){

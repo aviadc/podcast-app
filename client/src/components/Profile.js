@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import jwt from 'jsonwebtoken';
 import podcastApi from './Api';
 import MainNavbar from './navabrs/MainNavbar';
-import AudioPlayer from './AudioPlayer';
-import PodcastPreview from './PodcastPreview';
+import CollectionPreview from './CollectionPreview';
 
 
 
@@ -14,10 +13,6 @@ function Profile() {
   const [profileData,setProfileData] = useState(null);
   const [loggedIn,setLoggedIn] = useState(false);
   const [collectionsList,setCollectionsList] = useState([]);
-  // const [imageFile,setImageFile] = useState(null);
-  // const [audioFile,setAudioFile] = useState(null);
-  // const [audioLink,setAudiolink] = useState('');
-
 
 
   const navigate = useNavigate();
@@ -89,7 +84,7 @@ function Profile() {
   const displayCollections =()=>{
     return collectionsList.map((collection)=>{
       return <div key={Math.random()}>
-        <PodcastPreview imgUrl='' title={collection.title} />
+        <CollectionPreview imgUrl={collection.imgUrl} title={collection.title} />
       </div>
     })
     }

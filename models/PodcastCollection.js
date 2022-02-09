@@ -38,7 +38,7 @@ const PodcastCollectionSchema = new mongoose.Schema({
     type: mongoose.ObjectId,
     required:true,
   },
-  image:{
+  imgUrl:{
       type: String
   },
   podcasts:{
