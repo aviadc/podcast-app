@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate,useLocation } from "react-router-dom";
-import PodcastItem from './PodcastItem';
+import PodcastItem from '../PodcastItem';
 function Collection() {
 
   const navigate = useNavigate();

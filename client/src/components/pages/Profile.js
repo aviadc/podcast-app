@@ -1,10 +1,10 @@
 import React,{useEffect,useState} from 'react';
 import { useNavigate } from "react-router-dom";
 import jwt from 'jsonwebtoken';
-import podcastApi from './Api';
-import MainNavbar from './navabrs/MainNavbar';
-import CollectionPreview from './CollectionPreview';
-import './css/profile.css'
+import podcastApi from '../Api';
+import MainNavbar from '../navabrs/MainNavbar';
+import CollectionPreview from '../CollectionPreview';
+import '../css/profile.css'
 
 
 

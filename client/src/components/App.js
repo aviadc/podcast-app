@@ -1,14 +1,14 @@
 import React from "react";
 import "../index.css";
 import { BrowserRouter, Routes, Route} from "react-router-dom";
-import Home from "./Home";
+import Home from "./pages/Home";
 import HomePodcastsList from "./HomePodcastsList";
-import Login from "./Login";
-import About from "./About";
-import Profile from "./Profile";
-import Register from "./Register";
-import AddCollection from "./AddCollection";
-import Collection from "./Collection";
+import Login from "./pages/Login";
+import About from "./pages/About";
+import Profile from "./pages/Profile";
+import Register from "./pages/Register";
+import AddCollection from "./pages/AddCollection";
+import Collection from "./pages/Collection";
 
 
 

@@ -5,10 +5,15 @@ import "../css/navbar.css"
 function MainNavbar() {
   return <div>
     <nav className='main-navbar'>
-      <Link to="/">HOME</Link>
-      <Link to="/podcasts">PODCASTS</Link>
-      <Link to="/profile">PROFILE</Link>
-      <Link to="/about">ABOUT</Link>
+      <div className='main-navbar-inner-brand'>
+        <div></div>
+      </div>
+      <div className='main-navbar-inner-links' >
+        <Link to="/">HOME</Link>
+        <Link to="/podcasts">PODCASTS</Link>
+        <Link to="/profile">PROFILE</Link>
+        <Link to="/about">ABOUT</Link>
+      </div>
     </nav>
   </div>;
 }

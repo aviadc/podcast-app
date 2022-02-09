@@ -1,8 +1,7 @@
 import React ,{useState} from 'react';
 import { Link , useNavigate } from "react-router-dom";
-import "../index.css";
-import podcastApi from './Api';
-import MainNavbar from './navabrs/MainNavbar';
+import podcastApi from '../Api';
+import MainNavbar from '../navabrs/MainNavbar';
 
 function Register() {
   const [name,setName] = useState();

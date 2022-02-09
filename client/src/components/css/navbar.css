@@ -1,11 +1,17 @@
-.main-navbar > *{
-  margin: 1rem;
-  border: 1px solid black;
-  padding: 1rem;
-  text-decoration: none;
-  background-color: aquamarine;
+.main-navbar{
+  display: flex;
+  justify-content: space-between;
+  height: 10vh;
+  background-color: grey;
+  color: white;
 }
 
 .main-navbar > *:hover{
   opacity: 0.8;
 }
+/* 
+margin: 1rem;
+border: 1px solid black;
+padding: 1rem;
+text-decoration: none;
+background-color: aquamarine; */

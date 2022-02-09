@@ -1,7 +1,7 @@
 import React ,{useState} from 'react';
 import { useNavigate,useLocation } from "react-router-dom";
-import podcastApi from './Api';
-import Spinner from './Spinner';
+import podcastApi from '../Api';
+import Spinner from '../Spinner';
 
 
 function AddCollection() {
