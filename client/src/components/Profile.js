@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import podcastApi from './Api';
 import MainNavbar from './navabrs/MainNavbar';
 import CollectionPreview from './CollectionPreview';
+import './css/profile.css'
 
 
 

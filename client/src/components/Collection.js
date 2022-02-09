@@ -16,10 +16,11 @@ function Collection() {
 
   const displayPodcastList = ()=>{
     return state.podcasts.map((podcast)=>{
-      return <div>
-        <PodcastItem audioLink={podcast.audioLink} 
-        title={podcast.title}
-        imgUrl={state.imgUrl}
+      return <div key={Math.random()}>
+        <PodcastItem
+          audioLink={podcast.audioLink} 
+          title={podcast.title}
+          imgUrl={state.imgUrl}
          />
       </div>
     })
@@ -29,8 +30,8 @@ function Collection() {
   return (
     <div className='collection-page'>
       <div className='collection-container'>
-        <dvi> <img src={state? state.imgUrl : null} alt='collection image' width='300px' height='300px' />  </dvi>
-        <div className='collection-podcast-list'>''</div>
+        <div> <img src={state? state.imgUrl : null} alt='collection image' width='300px' height='300px' />  </div>
+        <div className='collection-podcast-list'>{state? displayPodcastList() : null}</div>
         <button onClick={goBackToProfilePage} >back to profile</button>
       </div>
     </div>
