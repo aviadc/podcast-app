@@ -1,14 +1,14 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
-import './css/collectionPreview.css'
+import './css/collectionAllPreview.css'
 
 
-function CollectionPreview(props) {
+function CollectionAllPreview(props) {
 
   const navigate = useNavigate();
 
   const handleClick = ()=>{
-    navigate('/collection',{state:props});
+    navigate('/collectionAll',{state:props});
   }
   
   return (
@@ -21,4 +21,4 @@ function CollectionPreview(props) {
   ) 
 }
 
-export default CollectionPreview;
+export default CollectionAllPreview;

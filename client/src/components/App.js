@@ -10,6 +10,7 @@ import Register from "./pages/Register";
 import AddCollection from "./pages/AddCollection";
 import Collection from "./pages/Collection";
 import AddPodcasts from "./pages/AddPodcasts";
+import CollectionAll from "./pages/CollectionAll";
 
 
 
@@ -28,7 +29,8 @@ const App = ()=>{
           <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Register />} />
           <Route path="/addCollection" element={<AddCollection />} />
-          <Route path="/Collection" element={<Collection />} />
+          <Route path="/collection" element={<Collection />} />
+          <Route path="/collectionAll" element={<CollectionAll />} />
           <Route path="/addPodcasts" element={<AddPodcasts />} />
         </Routes>
       </BrowserRouter>
