@@ -1,0 +1,33 @@
+.register-container{
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+}
+
+.register-inner{
+  border: 1px solid green;
+  width: 50%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2rem;
+  margin-top: 2rem;
+}
+
+.register-inner input{
+  font-size: 1.6rem;
+  
+}
+
+.register-inner button{
+  font-size: 1.6rem;
+  border-radius: 10px;
+  background-color: #000;
+  color: #fff;
+}
+
+.register-inner button:hover{
+  cursor: pointer;
+  color: #C0643A;
+}

@@ -1,0 +1,38 @@
+.collection-container{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.collection-inner{
+  margin-top: 2vh;
+  height: 90vh;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid teal;
+}
+
+.collection-navbar{
+  height: 8vh;
+  /* background-color: #000; */
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.collection-navbar button{
+  background-color: #000;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  margin: 0.5rem;
+}
+
+.collection-navbar button:hover{
+  color: #C0643A;
+  cursor: pointer;
+}

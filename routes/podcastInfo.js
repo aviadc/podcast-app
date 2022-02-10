@@ -14,6 +14,16 @@ router.get('/:id/podcasts',async (req,res)=>{
     }
   
  })
+
+ .get('/podcasts', async (req,res)=>{
+    try{
+        const podcastList = await PodcastCollection.find();
+        res.send(podcastList);
+     
+    }catch(e){
+        res.status(404).send(e.message)
+    }
+ })
   
   
   

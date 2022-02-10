@@ -86,7 +86,7 @@ function Profile() {
   const displayCollections =()=>{
     return collectionsList.map((collection)=>{
       return <div key={Math.random()}>
-        <CollectionPreview imgUrl={collection.imgUrl} title={collection.title} podcasts={collection.podcasts} />
+        <CollectionPreview imgUrl={collection.imgUrl} title={collection.title} podcasts={collection.podcasts} collectionId={collection._id} />
       </div>
     })
     }

@@ -1,7 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate,useLocation } from "react-router-dom";
 import PodcastItem from '../PodcastItem';
+import '../css/collection.css'
+
+
+
 function Collection() {
+
+  // const [collectionDetails,setCollectionDetails] = useState({});
 
   const navigate = useNavigate();
   const {state} = useLocation();
@@ -26,13 +32,20 @@ function Collection() {
     })
   }
 
+  const handleAddPodcasts = ()=>{
+    navigate('/addPodcasts',{state: state});
+  }
+
 
   return (
-    <div className='collection-page'>
-      <div className='collection-container'>
+    <div className='collection-container'>
+        <div className='collection-navbar'>
+          <button onClick={handleAddPodcasts} >add podcasts</button>
+          <button onClick={goBackToProfilePage} >back to profile</button>
+        </div>
+      <div className='collection-inner'>
         <div> <img src={state? state.imgUrl : null} alt='collection image' width='300px' height='300px' />  </div>
         <div className='collection-podcast-list'>{state? displayPodcastList() : null}</div>
-        <button onClick={goBackToProfilePage} >back to profile</button>
       </div>
     </div>
   ) 

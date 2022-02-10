@@ -2,11 +2,13 @@ import React ,{useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import MainNavbar from '../navabrs/MainNavbar';
 import podcastApi from '../Api';
+import '../css/login.css'
 
 
 function Login() {
   const [email,setEmail] = useState();
   const [password,setPassword] = useState();
+  const [messageToTheUser,setMessageToTheUser] = useState('');
 
   const navigate = useNavigate();
   
@@ -24,6 +26,7 @@ function Login() {
       localStorage.setItem('token',data);
       navigate('/profile');
     }catch(e){
+      setMessageToTheUser('wrong credentials')
       console.log(e.message);
     }
   }
@@ -31,19 +34,22 @@ function Login() {
     <div>
       <MainNavbar />
         <div className='login-container'>
-        <h2>Login</h2>
-        <form className='form'>
-          <div>
-            <input placeholder='email' onChange={(e)=>setEmail(e.target.value)}/>
+          <div className='login-inner'>
+            <h2>Login</h2>
+            <form className='form'>
+              <div>
+                <input placeholder='email' onChange={(e)=>setEmail(e.target.value)}/>
+              </div>
+              <div>
+                <input type={'password'} placeholder='password' onChange={(e)=>setPassword(e.target.value)}/>
+              </div>
+              <div className='message-to-the-user'>{messageToTheUser}</div>
+              <div>
+              <button onClick={login}>login</button>
+              </div>
+            </form>
+            <div className='font'>not have a user? please <Link to={'/register'}>Register</Link> </div>
           </div>
-          <div>
-            <input type={'password'} placeholder='password' onChange={(e)=>setPassword(e.target.value)}/>
-          </div>
-          <div>
-          <button onClick={login}>login</button>
-          </div>
-        </form>
-        <div className='font'>not have a user? please <Link to={'/register'}>Register</Link> </div>
       </div>
     </div>
   )

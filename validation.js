@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 const schemaRegisterValidation = Joi.object({
-  name: Joi.string().max(40).required(),
+  name: Joi.string().max(40).min(4).required(),
   email: Joi.string().max(100).required().email(),
   password: Joi.string().min(6).required(),
 });

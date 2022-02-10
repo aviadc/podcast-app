@@ -1,9 +1,10 @@
 import React from 'react';
 import AudioPlayer from './AudioPlayer';
+import './css/podcastItem.css'
 
 function PodcastItem(props) {
   return(
-    <div>
+    <div className='podcast-item-container'>
       <div className='podcast-item-up'>
         <div className='podcast-item-up-img'>
           <img src={props.imgUrl} alt='collection-image' width='50px' height='50px' />
