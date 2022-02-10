@@ -3,7 +3,7 @@ import MainNavbar from '../navabrs/MainNavbar';
 import { useNavigate } from "react-router-dom";
 import podcastApi from '../Api';
 import CollectionAllPreview from '../CollectionAllPreview';
-import '../css/profile.css'
+import '../css/homePodcastsList.css'
 
 
 function HomePodcastsList() {
@@ -45,7 +45,7 @@ function HomePodcastsList() {
         <MainNavbar />
         <div className='home-podcasts-list-container'>
           <div className='home-podcasts-list-inner'> 
-            <div>
+            <div className='home-podcasts-list'>
             {collectionsList.length>0? displayCollections() : null}
             </div>
           </div>
