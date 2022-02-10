@@ -88,6 +88,7 @@ function AddCollection() {
       const imgData = await uploadImage(data._id);
       const audioData = await uploadAudio(data._id)
       setIsLoading(false);
+      localStorage.removeItem('collectionsList');
       setMessageToUser('upload successfully ');
     }catch(e){
       setIsLoading(false);

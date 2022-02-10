@@ -42,6 +42,7 @@ function AddPodcasts() {
       const audioData = await podcastApi.post(`${state.collectionId}/upload/audio`,data);
       console.log(audioData,'audiodata');
       state.podcasts = [...audioData.data.podcasts]; 
+      localStorage.removeItem('collectionsList');
       setIsLoading(false);
       setMessageToUser('upload successfully ');
     }catch(e){

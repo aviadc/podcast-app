@@ -43,9 +43,12 @@ function HomePodcastsList() {
   return (
       <div>
         <MainNavbar />
-        <h1>podcast list</h1>
-        <div>
-         {collectionsList.length>0? displayCollections() : null}
+        <div className='home-podcasts-list-container'>
+          <div className='home-podcasts-list-inner'> 
+            <div>
+            {collectionsList.length>0? displayCollections() : null}
+            </div>
+          </div>
         </div>
       </div>
   ) 
