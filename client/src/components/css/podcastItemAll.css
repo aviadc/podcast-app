@@ -1,0 +1,25 @@
+.podcast-item-all-container{
+  border: 1px solid maroon;
+  margin: 1rem;
+  border-radius: 10px;
+  padding: 0.1rem;
+  /* height: 9vh; */
+}
+
+.podcast-item-all-up{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem;
+  border: 1px solid red;
+}
+
+.podcast-item-all-bottom button{
+  background-color: #000;
+  color: #fff
+}
+
+.podcast-item-all-bottom button:hover{
+  color: #C0643A;
+  cursor: pointer;
+}

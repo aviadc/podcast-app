@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate,useLocation } from "react-router-dom";
-import PodcastItem from '../PodcastItem';
+import PodcastItemAll from '../PodcastItemAll';
 import '../css/collectionAll.css'
 
 
@@ -23,7 +23,7 @@ function CollectionAll() {
   const displayPodcastList = ()=>{
     return state.podcasts.map((podcast)=>{
       return <div key={Math.random()}>
-        <PodcastItem
+        <PodcastItemAll
           audioLink={podcast.audioLink} 
           title={podcast.title}
           imgUrl={state.imgUrl}
@@ -35,13 +35,13 @@ function CollectionAll() {
   
 
   return (
-    <div className='collection-container'>
-        <div className='collection-navbar'>
+    <div className='collection-all-container'>
+        <div className='collection-all-navbar'>
           <button onClick={goBackToPodcasts} >back to podcasts</button>
         </div>
-      <div className='collection-inner'>
-        <div> <img src={state? state.imgUrl : null} alt='collection image' width='300px' height='300px' />  </div>
-        <div className='collection-podcast-list'>{state? displayPodcastList() : null}</div>
+      <div className='collection-all-inner'>
+        <div> <img src={state? state.imgUrl : null} alt='collection-all image' width='300px' height='300px' />  </div>
+        <div className='collection-all-podcast-list'>{state? displayPodcastList() : null}</div>
       </div>
     </div>
   ) 
