@@ -27,23 +27,20 @@ function AddCollection() {
     const data = new FormData();
     data.append('image',imageFile);
     try{
-     const imgData = await podcastApi.post(`${collectionId}/upload/image`,data);
-    //  console.log(imgData.data)
+     await podcastApi.post(`${collectionId}/upload/image`,data);
+    
     }catch(e){
       console.log(e)
     }
   }
 
   const uploadAudio = async (collectionId)=>{
-    // console.log(audioFiles);
     const data = new FormData();
     audioFiles.forEach((audio)=>{
       data.append('audio',audio);
     })
     try{
-     const audioData = await podcastApi.post(`${collectionId}/upload/audio`,data);
-    //  console.log(audioData.data);
-    //  setAudiolink(audioData.data.Location);
+      podcastApi.post(`${collectionId}/upload/audio`,data);
     }catch(e){
       console.log(e)
     }
@@ -81,12 +78,11 @@ function AddCollection() {
       setIsLoading(true);
       setMessageToUser('');
       const data = await uploadTitle();
-      // console.log(data);
       if(!data){
         throw new Error('title error');
       }
-      const imgData = await uploadImage(data._id);
-      const audioData = await uploadAudio(data._id)
+      await uploadImage(data._id);
+      await uploadAudio(data._id)
       setIsLoading(false);
       localStorage.removeItem('collectionsList');
       setMessageToUser('upload successfully ');

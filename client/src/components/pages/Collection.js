@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import { useNavigate,useLocation } from "react-router-dom";
 import PodcastItem from '../PodcastItem';
 import '../css/collection.css'
@@ -22,11 +22,18 @@ function Collection() {
   }
 
   const handlePodcastDelete = async(collectionId,podcastId)=>{
+    console.log('inside podcast delete');
     try{
-      console.log('hey podcast delete');
-      const data = await podcastApi.delete(`/${collectionId}/${podcastId}/podcast`,{collectionId:collectionId});
-      // console.log(data,'after delete');
-      // localStorage.removeItem('collectionsList');
+      await podcastApi.delete(`/${collectionId}/${podcastId}/podcast`,{collectionId:collectionId});
+      console.log('after api call');
+      const newpodcastsList = state.podcasts.filter((podcast)=>{
+        return podcast._id.toString()!==podcastId.toString();
+      })
+      console.log(newpodcastsList,'newpodcast list');
+      state.podcasts = [...newpodcastsList];
+      console.log(state,'state');
+      navigate('/collection',{state:state}); //update the state for the podcasts list
+      localStorage.removeItem('collectionsList');
     }catch(e){
       console.log(e)
     }
@@ -60,7 +67,7 @@ function Collection() {
           <button onClick={goBackToProfilePage} >back to profile</button>
         </div>
       <div className='collection-inner'>
-        <div> <img src={state? state.imgUrl : null} alt='collection image' width='300px' height='300px' />  </div>
+        <div> <img src={state? state.imgUrl : null} alt='collection' width='300px' height='300px' />  </div>
         <div className='collection-podcast-list'>{state? displayPodcastList() : null}</div>
       </div>
     </div>

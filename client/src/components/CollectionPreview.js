@@ -16,7 +16,7 @@ function CollectionPreview(props) {
   return (
     <div className='collection-preview' onClick={handleClick} >
       <div className='collection-preview-img'>
-        <img src={props.imgUrl} width='100%' height='100%' />
+        <img src={props.imgUrl} alt='collection' width='100%' height='100%' />
       </div>
       <h2 className='collection-preview-title'>{props.title}</h2>
      

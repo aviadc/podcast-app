@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import MainNavbar from '../navabrs/MainNavbar';
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import podcastApi from '../Api';
 import CollectionAllPreview from '../CollectionAllPreview';
 import '../css/homePodcastsList.css'

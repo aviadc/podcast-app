@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect} from 'react';
 import { useNavigate,useLocation } from "react-router-dom";
 import PodcastItemAll from '../PodcastItemAll';
 import '../css/collectionAll.css'
@@ -40,7 +40,7 @@ function CollectionAll() {
           <button onClick={goBackToPodcasts} >back to podcasts</button>
         </div>
       <div className='collection-all-inner'>
-        <div> <img src={state? state.imgUrl : null} alt='collection-all image' width='300px' height='300px' />  </div>
+        <div> <img src={state? state.imgUrl : null} alt='collection-all' width='300px' height='300px' />  </div>
         <div className='collection-all-podcast-list'>{state? displayPodcastList() : null}</div>
       </div>
     </div>

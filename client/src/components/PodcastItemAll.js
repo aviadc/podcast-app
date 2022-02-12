@@ -1,19 +1,14 @@
-import React,{useState} from 'react';
+import React from 'react';
 import AudioPlayer from './AudioPlayer';
 import './css/podcastItemAll.css'
 
 function PodcastItemAll(props) {
-  const [comments,setComments] = useState([]);
-
-
-  const showComments =()=>{
-
-  }
+ 
   return(
     <div className='podcast-item-all-container'>
       <div className='podcast-item-all-up'>
         <div className='podcast-item-up-img'>
-          <img src={props.imgUrl} alt='collection-image' width='50px' height='50px' />
+          <img src={props.imgUrl} alt='podcast-item' width='50px' height='50px' />
         </div>
         <div className='podcast-item-up-title'>{props.title}</div>
       </div>
