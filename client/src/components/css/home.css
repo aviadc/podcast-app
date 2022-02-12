@@ -1,0 +1,22 @@
+
+
+.home-page{
+ 
+}
+
+.home-container{
+  height: 90vh;
+  
+  /* display: flex; */
+}
+
+.home-inner{
+  border: 1px solid teal;
+  width: 40%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+

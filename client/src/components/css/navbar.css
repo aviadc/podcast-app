@@ -2,19 +2,19 @@
   display: flex;
   justify-content: space-between;
   height: 10vh;
-  background-color: black;
+  background-color: transparent;
   color: white;
   font-size: 1.6rem;
 }
 
 .main-navbar-inner-links{
   /* border: 1px solid green; */
-  width: 40%;
+  width: 25%;
   display: flex;
 }
 
 .main-navbar-inner-links > *:hover{
-  color: #C0643A;
+  color: #F1B900;
 }
 
 .main-navbar-inner-links >*{
