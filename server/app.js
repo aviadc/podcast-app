@@ -4,8 +4,9 @@ const path = require('path');
 require('./db/mongoose');
 
 const authRoute = require('./routes/auth');
-const uploadRoute = require('./routes/upload')
-const podcastInfoRoute = require('./routes/podcastInfo')
+const uploadRoute = require('./routes/upload');
+const podcastInfoRoute = require('./routes/podcastInfo');
+const podcastDelete = require('./routes/delete');
 
 
 
@@ -14,7 +15,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/user',authRoute,uploadRoute,podcastInfoRoute);
+app.use('/api/user',authRoute,uploadRoute,podcastInfoRoute,podcastDelete);
 
 app.use(express.static(path.join(__dirname, '../client/build')));
 

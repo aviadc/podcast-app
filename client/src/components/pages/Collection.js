@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate,useLocation } from "react-router-dom";
 import PodcastItem from '../PodcastItem';
 import '../css/collection.css'
+import podcastApi from '../Api';
 
 
 
@@ -20,6 +21,17 @@ function Collection() {
     navigate('/profile');
   }
 
+  const handlePodcastDelete = async(collectionId,podcastId)=>{
+    try{
+      console.log('hey podcast delete');
+      const data = await podcastApi.delete(`/${collectionId}/${podcastId}/podcast`,{collectionId:collectionId});
+      // console.log(data,'after delete');
+      // localStorage.removeItem('collectionsList');
+    }catch(e){
+      console.log(e)
+    }
+  }
+
   const displayPodcastList = ()=>{
     return state.podcasts.map((podcast)=>{
       return <div key={Math.random()}>
@@ -28,6 +40,7 @@ function Collection() {
           title={podcast.title}
           imgUrl={state.imgUrl}
          />
+          <div><button onClick={()=>handlePodcastDelete(state.collectionId,podcast._id)}>delete</button></div>
       </div>
     })
   }
@@ -35,6 +48,9 @@ function Collection() {
   const handleAddPodcasts = ()=>{
     navigate('/addPodcasts',{state: state});
   }
+
+ 
+
 
 
   return (

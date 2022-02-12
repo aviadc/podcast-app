@@ -82,11 +82,26 @@ function Profile() {
   // }
 
   
+
+  const handleCollectionDelete = async(id)=>{
+    try{
+      console.log('hey');
+      const data = await podcastApi.delete(`/${id}/collection`);
+      console.log(data,'after delete');
+      getUserDetails();
+      localStorage.removeItem('collectionsList');
+    }catch(e){
+      console.log(e)
+    }
+  }
+
+  
   
   const displayCollections =()=>{
     return collectionsList.map((collection)=>{
       return <div key={Math.random()}>
         <CollectionPreview imgUrl={collection.imgUrl} title={collection.title} podcasts={collection.podcasts} collectionId={collection._id} />
+        <div><button onClick={()=>handleCollectionDelete(collection._id)}>delete</button></div>
       </div>
     })
     }

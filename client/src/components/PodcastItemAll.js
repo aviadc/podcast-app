@@ -20,7 +20,7 @@ function PodcastItemAll(props) {
       <div className='podcast-item-all-audio'>
         <AudioPlayer audioLink={props.audioLink} />
       </div>
-      <div className='podcast-item-all-bottom'>
+      {/* <div className='podcast-item-all-bottom'>
         <button>show comments</button>
         <div className='podcast-item-all-comments-container'>
           <div className='podcast-item-all-add-comments'>
@@ -35,7 +35,7 @@ function PodcastItemAll(props) {
         <div>
 
         </div>
-      </div>
+      </div> */}
     </div>
   )
   
