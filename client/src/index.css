@@ -4,11 +4,11 @@
 }
 
 body{
-  /* background-color: #FECD05; */
-  background-image: url('./img/home5.jpg');
+  background-color: #FECD05;
+  /* background-image: url('./img/home5.jpg');
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;  */
 }
 
 /* font-family: 'Roboto', sans-serif;

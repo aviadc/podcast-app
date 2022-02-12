@@ -116,7 +116,7 @@ function Profile() {
   
 
   return(
-    <div>
+    <div className='profile-page'>
       <MainNavbar />
       <div className='profile-container'>
         <div className='profile-inner'>

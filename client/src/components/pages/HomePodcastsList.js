@@ -41,7 +41,7 @@ function HomePodcastsList() {
     }
 
   return (
-      <div>
+      <div className='home-podcast-list-page'>
         <MainNavbar />
         <div className='home-podcasts-list-container'>
           <div className='home-podcasts-list-inner'> 

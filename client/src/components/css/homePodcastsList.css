@@ -1,3 +1,11 @@
+.home-podcast-list-page{
+  /* background-image: url('../../img/background2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;  */
+}
+
+
 .home-podcasts-list-container{
  height: 90vh;
   display: flex;
