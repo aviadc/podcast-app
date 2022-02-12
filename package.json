@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/aviadc/podcast-project/issues"
   },
-  "homepage": "https://github.com/aviadc/podcast-project#readme"
+  "homepage": "https://github.com/aviadc/podcast-project#readme",
+  "dependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
