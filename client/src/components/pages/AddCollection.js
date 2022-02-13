@@ -81,8 +81,8 @@ function AddCollection() {
       if(!data){
         throw new Error('title error');
       }
-      await uploadImage(data._id);
-      await uploadAudio(data._id)
+      const imgData = await uploadImage(data._id);
+      const audioData = await uploadAudio(data._id)
       setIsLoading(false);
       localStorage.removeItem('collectionsList');
       setMessageToUser('upload successfully ');
