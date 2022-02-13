@@ -3,6 +3,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url('../../img/background2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
 }
 
 .collection-inner{
@@ -33,6 +37,47 @@
 }
 
 .collection-navbar button:hover{
-  color: #C0643A;
+  color: #FECD05;
+  cursor: pointer;
+}
+
+.collection-delete-btn button{
+  background-color: #000;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  margin: 0.5rem;
+}
+
+.collection-delete-btn button:hover{
+  color: #FECD05;
+  cursor: pointer;
+}
+
+.delete-window{
+  border-radius: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30vh;
+  width: 50vh;
+  background-color: gold;
+  position: absolute;
+  z-index: 2;
+  top: 30%;
+  left: 30%;
+}
+
+.delete-window button{
+  background-color: #000;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  margin: 0.5rem;
+}
+
+.delete-window button:hover{
+  color: #FECD05;
   cursor: pointer;
 }

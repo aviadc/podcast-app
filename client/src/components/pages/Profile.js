@@ -14,6 +14,7 @@ function Profile() {
   const [profileData,setProfileData] = useState(null);
   const [loggedIn,setLoggedIn] = useState(false);
   const [collectionsList,setCollectionsList] = useState([]);
+  const [visibilty,setVisibilty] = useState("hidden");
 
 
   const navigate = useNavigate();
@@ -81,13 +82,22 @@ function Profile() {
   //   }
   // }
 
-  
+  const showDeleteWindow = () =>{
+    setVisibilty("visible");
+    // console.log(currentUser);
+  }
+
+
+  const handleVisibilty=()=>{
+    setVisibilty("hidden");
+  }
 
   const handleCollectionDelete = async(id)=>{
     try{
       console.log('hey');
       const data = await podcastApi.delete(`/${id}/collection`);
       console.log(data,'after delete');
+      handleVisibilty();
       getUserDetails();
       localStorage.removeItem('collectionsList');
     }catch(e){
@@ -101,7 +111,13 @@ function Profile() {
     return collectionsList.map((collection)=>{
       return <div key={Math.random()}>
         <CollectionPreview imgUrl={collection.imgUrl} title={collection.title} podcasts={collection.podcasts} collectionId={collection._id} />
-        <div><button onClick={()=>handleCollectionDelete(collection._id)}>delete</button></div>
+        <div className='collection-preview-delete-btn'><button onClick={showDeleteWindow}>delete</button></div>
+        <div className='delete-window' style={{visibility: visibilty}}>
+           <h2> ARE YOU SURE </h2>
+           <div>
+           <button onClick={()=>handleCollectionDelete(collection._id)} >YES</button><button onClick={handleVisibilty}>NO</button>
+           </div>
+          </div>
       </div>
     })
     }

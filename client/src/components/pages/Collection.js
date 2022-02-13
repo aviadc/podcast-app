@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React, { useEffect,useState} from 'react';
 import { useNavigate,useLocation } from "react-router-dom";
 import PodcastItem from '../PodcastItem';
 import '../css/collection.css'
@@ -9,6 +9,7 @@ import podcastApi from '../Api';
 function Collection() {
 
   // const [collectionDetails,setCollectionDetails] = useState({});
+  const [visibilty,setVisibilty] = useState("hidden");
 
   const navigate = useNavigate();
   const {state} = useLocation();
@@ -21,6 +22,18 @@ function Collection() {
     navigate('/profile');
   }
 
+
+  const showDeleteWindow = () =>{
+    setVisibilty("visible");
+    // console.log(currentUser);
+  }
+
+
+  const handleVisibilty=()=>{
+    setVisibilty("hidden");
+  }
+
+
   const handlePodcastDelete = async(collectionId,podcastId)=>{
     console.log('inside podcast delete');
     try{
@@ -30,6 +43,7 @@ function Collection() {
         return podcast._id.toString()!==podcastId.toString();
       })
       console.log(newpodcastsList,'newpodcast list');
+      handleVisibilty();
       state.podcasts = [...newpodcastsList];
       console.log(state,'state');
       navigate('/collection',{state:state}); //update the state for the podcasts list
@@ -47,7 +61,13 @@ function Collection() {
           title={podcast.title}
           imgUrl={state.imgUrl}
          />
-          <div><button onClick={()=>handlePodcastDelete(state.collectionId,podcast._id)}>delete</button></div>
+          <div className='collection-delete-btn'><button onClick={showDeleteWindow}>delete</button></div>
+          <div className='delete-window' style={{visibility: visibilty}}>
+           <h2> ARE YOU SURE </h2>
+           <div>
+           <button onClick={()=>handlePodcastDelete(state.collectionId,podcast._id)} >YES</button><button onClick={handleVisibilty}>NO</button>
+           </div>
+          </div>
       </div>
     })
   }

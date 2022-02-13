@@ -1,5 +1,5 @@
 .profile-page{
-  background-image: url('../../img/background2.jpg');
+  background-image: url('../../img/home5.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat; 
@@ -52,10 +52,25 @@
 }
 
 .profile-inner-top button:hover{
-  color: #C0643A;
+  color: #FECD05;
 }
 
 .profile-inner-top-welcome{
   border: 1px solid navy;
   width: 40%;
 }
+
+.collection-preview-delete-btn button{
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin-left: 0.7rem;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
+}
+
+.collection-preview-delete-btn button:hover{
+  color: #FECD05;
+}
+

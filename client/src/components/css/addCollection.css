@@ -2,6 +2,10 @@
   height: 100vh;
   display: flex;
   justify-content: center;
+  background-image: url('../../img/background2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
 }
 
 
@@ -16,10 +20,12 @@
   align-items: center;
   justify-content: space-around;
   font-size: 2rem;
+  /* color: #fff; */
 }
 
 .add-collection-inner-input-div{
   width: 90%;
+  color: #fff;
 }
 
 .add-collection-inner button{
