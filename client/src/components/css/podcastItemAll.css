@@ -2,7 +2,7 @@
   border: 1px solid maroon;
   margin: 1rem;
   border-radius: 10px;
-  padding: 0.1rem;
+  padding: 0.3rem;
   /* height: 9vh; */
 }
 
@@ -11,7 +11,7 @@
   justify-content: space-between;
   align-items: center;
   margin: 0.5rem;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .podcast-item-all-bottom button{
@@ -20,6 +20,6 @@
 }
 
 .podcast-item-all-bottom button:hover{
-  color: #C0643A;
+  color: #FECD05;
   cursor: pointer;
 }

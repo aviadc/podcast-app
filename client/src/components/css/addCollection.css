@@ -13,7 +13,7 @@
 .add-collection-inner{
   margin-top: 2rem;
   width: 70vh;
-  border: 1px solid firebrick;
+  /* border: 1px solid firebrick; */
   height: 80vh;
   display: flex;
   flex-direction: column;
@@ -38,7 +38,7 @@
 }
 
 .add-collection-inner button:hover{
-  color: #C0643A;
+  color: #FECD05;
 }
 
 .add-collection-inner input{

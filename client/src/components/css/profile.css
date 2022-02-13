@@ -13,13 +13,13 @@
 }
 
 .profile-inner{
-  border: 1px solid green;
+  /* border: 1px solid green; */
   width: 70vw;
   height: 80vh;
 }
 
 .profile-collections{
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
   flex-wrap: wrap;
   height: 80%;
@@ -38,7 +38,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  border: 1px solid fuchsia;
+  /* border: 1px solid fuchsia; */
   font-size: 1.6rem;
 }
 
@@ -56,7 +56,7 @@
 }
 
 .profile-inner-top-welcome{
-  border: 1px solid navy;
+  /* border: 1px solid navy; */
   width: 40%;
 }
 
