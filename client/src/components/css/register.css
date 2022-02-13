@@ -1,3 +1,12 @@
+
+.register-page{
+  height: 100vh;
+  background-image: url('../../img/background2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
+}
+
 .register-container{
   height: 90vh;
   display: flex;
@@ -5,7 +14,7 @@
 }
 
 .register-inner{
-  border: 1px solid green;
+  /* border: 1px solid green; */
   width: 50%;
   height: 50%;
   display: flex;

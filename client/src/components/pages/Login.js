@@ -31,7 +31,7 @@ function Login() {
     }
   }
   return (
-    <div>
+    <div className='login-page'>
       <MainNavbar />
         <div className='login-container'>
           <div className='login-inner'>

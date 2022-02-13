@@ -1,3 +1,11 @@
+.login-page{
+  height: 100vh;
+  background-image: url('../../img/background2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
+}
+
 .login-container{
   height: 90vh;
   display: flex;

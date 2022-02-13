@@ -32,7 +32,7 @@ function Register() {
 
 
 
-  return <div>
+  return <div className='register-page'>
      <MainNavbar />
      <div className='register-container'>
        <div className='register-inner'>
