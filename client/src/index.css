@@ -5,13 +5,12 @@
 
 body{
   background-color: #E5AB00;
-  /* background-image: url('./img/home5.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;  */
+ 
 }
 
-/* font-family: 'Roboto', sans-serif;
-font-family: 'Rubik', sans-serif;
-font-family: 'Shadows Into Light', cursive;
-font-family: 'Source Sans Pro', sans-serif; */
+@media all and (max-width: 500px){
+  body{
+    /* width: 400px; */
+    background-color: aquamarine;
+  }
+}

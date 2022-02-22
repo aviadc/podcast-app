@@ -31,9 +31,37 @@
   display: flex;
   justify-content: center;
 }
-/* 
-margin: 1rem;
-border: 1px solid black;
-padding: 1rem;
-text-decoration: none;
-background-color: aquamarine; */
+
+@media all and (max-width: 500px){
+  .main-navbar{
+    /* width: 25%; */
+    /* color: black; */
+    display: flex;
+    /* font-size: 1.4rem; */
+    justify-content: space-between;
+    border: 1px solid green;
+    /* height: 30vh; */
+  }
+  .main-navbar-inner-links{
+    border: 1px solid red;
+    width: 25%;
+    display: flex;
+  }
+
+  .main-navbar-inner-links >*{
+    margin: 0.5rem;
+    /* width: 500px; */
+    
+  }
+
+  .main-navbar-inner-brand{
+    border: 1px solid black;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .main-navbar-inner-brand img{
+    width: 100%;
+  }
+}
