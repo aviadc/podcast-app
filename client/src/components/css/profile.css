@@ -14,9 +14,8 @@
 }
 
 .profile-inner{
-  /* border: 1px solid green; */
-  width: 70vw;
-  height: 80vh;
+  border: 1px solid green;
+  height: 90%;
 }
 
 .profile-collections{
@@ -78,6 +77,7 @@
 @media all and (max-width: 500px){
 
   .profile-page{
+    border: 1px solid black;
     background-image: url('../../img/background_small1.jpg');
     background-size: cover;
     background-position: center;

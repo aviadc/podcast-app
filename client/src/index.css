@@ -1,10 +1,11 @@
 *{
   margin: 0;
+  box-sizing: border-box;
   font-family: 'Source Sans Pro', sans-serif;
 }
 
 body{
-  background-color: #E5AB00;
+  /* background-color: #E5AB00; */
  
 }
 

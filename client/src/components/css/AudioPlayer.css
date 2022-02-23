@@ -90,3 +90,11 @@
   transform: scale(1.2);
   background: darkgoldenrod;
 }
+
+@media all and (max-width:500px){
+  .audio-player-container{
+    display: flex;
+    align-items: center;
+    width: 350px;
+  }
+}

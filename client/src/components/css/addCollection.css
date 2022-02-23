@@ -1,11 +1,13 @@
 .add-collection-container{
   height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   background-image: url('../../img/background2.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat; 
+  border: 1px solid firebrick;
 }
 
 
@@ -13,19 +15,22 @@
 .add-collection-inner{
   margin-top: 2rem;
   width: 70vh;
-  /* border: 1px solid firebrick; */
+  border: 1px solid sienna;
   height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   font-size: 2rem;
+  /* padding: 5rem; */
   /* color: #fff; */
 }
 
 .add-collection-inner-input-div{
-  width: 90%;
+  width: 80%;
   color: #fff;
+  border: 1px solid black;
+  /* padding: 2rem; */
 }
 
 .add-collection-inner button{
