@@ -74,5 +74,25 @@
   color: #FECD05;
 }
 
+@media all and (max-width: 500px){
 
+  .profile-page{
+    background-image: url('../../img/background_small1.jpg');
+  }
+  .profile-inner{
+    width: 90%;
+  }
+  .profile-inner-top-container{
+    border: 1px solid green;
+    height: 50%;
+  }
+
+  .profile-inner-top{
+    border: 1px solid red;
+    width: 100%;
+    flex-direction: column;
+    color: #fff;
+    flex-wrap: wrap;
+  }
+}
 
