@@ -34,6 +34,44 @@
   text-align: center;
 }
 
+@media all and (max-width: 500px){
+  .home-page{
+    background-image: url('../../img/home_small2.jpg');
+   
+  }
+
+  .home-container{
+    display: flex;
+    justify-content: center;
+ 
+  }
+
+  .home-inner{
+    /* border: 1px solid teal; */
+    width: 80%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #000;
+  }
+
+  .home-welcome{
+    text-align: center;
+    border: 1px solid red;
+    font-size: 4rem;
+    font-family: 'Shadows Into Light', cursive;
+    color: 	#FFF8DC;
+  }
+
+  .home-sub-welcom{
+    font-size: 2.5rem;
+    color: 	#FFF8DC;
+    border: 1px solid navy;
+  }
+
+}
+
 /* font-family: 'Festive', cursive;
 font-family: 'Poppins', sans-serif;
 font-family: 'Roboto', sans-serif;

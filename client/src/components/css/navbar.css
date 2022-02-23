@@ -8,7 +8,6 @@
 }
 
 .main-navbar-inner-links{
-  /* border: 1px solid green; */
   width: 25%;
   display: flex;
 }
@@ -21,12 +20,9 @@
   margin: 1rem;
   text-decoration: none;
   color: #fff;
-  /* border: 1px solid white; */
-  
 }
 
 .main-navbar-inner-brand{
-  /* border: 1px solid white; */
   width: 10%;
   display: flex;
   justify-content: center;
@@ -34,24 +30,18 @@
 
 @media all and (max-width: 500px){
   .main-navbar{
-    /* width: 25%; */
-    /* color: black; */
     display: flex;
-    /* font-size: 1.4rem; */
     justify-content: space-between;
     border: 1px solid green;
-    /* height: 30vh; */
   }
   .main-navbar-inner-links{
     border: 1px solid red;
-    width: 25%;
+    width: 78%;
     display: flex;
   }
 
   .main-navbar-inner-links >*{
-    margin: 0.5rem;
-    /* width: 500px; */
-    
+    margin: 0.3rem;
   }
 
   .main-navbar-inner-brand{
