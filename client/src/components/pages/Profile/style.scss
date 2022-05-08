@@ -1,0 +1,25 @@
+.profile-container{
+  margin: 0 2rem;
+  margin-top: 10vh;
+  height: 90vh;
+  border: 1px solid blue;
+}
+
+.profile-inner-top{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.profile-collections-list-container{
+  border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-collections-list{
+  border: 1px solid red;
+  width: 80%;
+  overflow: scroll;
+}

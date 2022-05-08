@@ -1,0 +1,16 @@
+.menu-container{
+  width: 30px;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid green;
+  
+  div {
+    height: 5px;
+    background-color: black;
+    width: 100%;
+  }
+
+  .middle-div{
+    margin: 5px 0;
+  }
+
+}

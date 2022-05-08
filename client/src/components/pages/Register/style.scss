@@ -1,0 +1,22 @@
+.register-container{
+  height: 90vh;
+  margin: 0 2rem;
+  margin-top: 10vh;
+  display: flex;
+  justify-content: center;
+  border: 1px solid green;
+}
+
+.register-inner{
+  margin-top: 2rem;
+  border: 1px solid red;
+  font-size: 2rem;
+
+  input {
+    font-size: 2rem;
+  }
+
+  div{
+    margin: 1rem;
+  }
+}
