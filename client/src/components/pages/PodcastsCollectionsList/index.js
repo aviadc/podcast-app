@@ -28,22 +28,23 @@ const PodcastCollectionsList = () => {
     }
     innerUseEffect();
   }, [])
-  
+
 
   return (
     <>
       <div className='page-background'></div>
       <StyledContainer>
         <div className='collection-list-container'>
-          {collectionsList.length && collectionsList.map((collection) => {
+          {!!collectionsList.length && collectionsList.map((collection) => {
             return (
-              <div key={Math.random()}>
-                <PodcastCollectionItem
-                  imgUrl={collection.imgUrl}
-                  title={collection.title}
-                  podcasts={collection.podcasts}
-                  collectionId={collection._id} />
-              </div>
+              <PodcastCollectionItem
+                key={collection._id}
+                imgUrl={collection.imgUrl}
+                title={collection.title}
+                podcasts={collection.podcasts}
+                collectionId={collection._id}
+                profile={false}
+              />
             )
           })}
         </div>

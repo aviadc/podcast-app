@@ -19,7 +19,7 @@ export const NavbarRight = styled.div`
 `
 export const NavbarLeft = styled.div`
   width: 30%;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 0.5rem;
 `
 export const NavbarLink = styled(Link)`
@@ -33,9 +33,10 @@ export const NavbarLink = styled(Link)`
   }
 `
 
-export const NavbarNarrow = styled.nav`
+export const NavbarNarrow = styled.div`
   height: 100%;
   border: 1px solid blue;
+  backdrop-filter: blur(5px);
   
   
   @media screen and (min-width: 500px) {
@@ -57,7 +58,7 @@ export const NavbarWide = styled.div`
 
 export const NavbarMenuButton = styled.div`
   font-size: 3rem;
-  border: 1px solid brown;
+  /* border: 1px solid brown; */
   cursor: pointer;
   @media screen and (min-width: 500px){
     display: none;
@@ -74,6 +75,5 @@ export const MenuButtonContainer = styled.div`
 export const NavbarMenuNarrowLinksContainer = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid yellow;
-
+  /* border: 1px solid yellow; */
 `

@@ -1,4 +1,4 @@
-.login-container{
+.login-container {
   height: 90vh;
   margin: 0 2rem;
   margin-top: 10vh;
@@ -7,7 +7,7 @@
   border: 1px solid green;
 }
 
-.login-inner{
+.login-inner {
   margin-top: 2rem;
   border: 1px solid red;
   font-size: 2rem;
@@ -16,7 +16,16 @@
     font-size: 2rem;
   }
 
-  div{
+  div {
     margin: 1rem;
   }
+
+  @media screen and (max-width: 500px) {
+    font-size: 1.4rem;
+
+    input {
+      font-size: 1.4rem;
+    }
+  }
+
 }

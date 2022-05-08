@@ -74,18 +74,18 @@ const Profile = () => {
     setVisibilty("hidden");
   }
 
-  // const handleCollectionDelete = async (id) => {
-  //   try {
-  //     console.log('hey');
-  //     const data = await podcastApi.delete(`/${id}/collection`);
-  //     console.log(data, 'after delete');
-  //     handleVisibilty();
-  //     getUserDetails();
-  //     localStorage.removeItem('collectionsList');
-  //   } catch (e) {
-  //     console.log(e)
-  //   }
-  // }
+  const handleCollectionDelete = async (id) => {
+    try {
+      console.log('hey');
+      const data = await podcastApi.delete(`/${id}/collection`);
+      console.log(data, 'after delete');
+      handleVisibilty();
+      getUserDetails();
+      localStorage.removeItem('collectionsList');
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
 
 
@@ -114,7 +114,8 @@ const Profile = () => {
 
 
   return (
-    <div className='profile-page'>
+    <>
+      <div className='profile-page'> </div>
       <div className='profile-container'>
         <div className='profile-inner-top'>
           <h2 className='profile-inner-top-welcome'> WELCOME {profileData ? profileData.name : null}</h2>
@@ -125,21 +126,29 @@ const Profile = () => {
             <Button onClick={logout}>log out</Button>
           </div>
         </div>
-        <div className='profile-collections-list-container'>
-          <div className='profile-collections-list'>
-            {collectionsList.length && collectionsList.map((collection) => {
-              return <PodcastCollectionItem
+        <div className='profile-collections-list'>
+          {!!collectionsList.length && collectionsList.map((collection) => {
+            return <div className='collection-item-container'>
+              <PodcastCollectionItem
+                key={collection._i}
                 imgUrl={collection.imgUrl}
                 title={collection.title}
                 podcasts={collection.podcasts}
-                collectionId={collection._id} 
-                profile={true}/>
-            })
-            }
-          </div>
+                collectionId={collection._id}
+                profile={true} />
+              < div className='collection-preview-delete-btn'><Button onClick={showDeleteWindow}>delete</Button></div>
+              <div className='delete-window' style={{ visibility: visibilty }}>
+                <h2> ARE YOU SURE </h2>
+                <div>
+                  <Button onClick={() => handleCollectionDelete(collection._id)} >YES</Button><Button onClick={handleVisibilty}>NO</Button>
+                </div>
+              </div>
+            </div>
+          })
+          }
         </div>
-      </div >
-    </div >
+      </div>
+    </>
   )
 }
 
