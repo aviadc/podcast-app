@@ -108,13 +108,13 @@ const AddCollection = () => {
     <div className='add-collection-container'>
       <div className='add-collection-inner'>
         <h2>add a collection</h2>
-          <div className='add-collection-inner-input-div'>
+          <div>
           ADD IMAGE <input type="file" onChange={fileImageChange}/>
           </div>
-          <div className='add-collection-inner-input-div'>
+          <div>
           ADD AUDIO <input type="file" multiple onChange={fileAudioChange} accept='audio/*'/>
           </div>
-          <div className='add-collection-inner-input-div'>
+          <div>
             collection name: <input type='text' onChange={titleChange} />
           </div>
           <div>

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
 import podcastApi from '../../Api';
 import Spinner from '../../Spinner';
-// import '../css/addCollection.css'
+import Button from "../../styledComponents/Button"
+import "./style.scss"
 
 
 const AddPodcasts = () => {
@@ -57,21 +58,21 @@ const AddPodcasts = () => {
 
 
   return (
-    <div className='add-collection-container'>
-      <div className='add-collection-inner'>
+    <div className='add-podcasts-container'>
+      <div className='add-podcasts-inner'>
         <h2>add podcasts</h2>
-        <div className='add-collection-inner-input-div'>
+        <div>
           Add Audio <input type="file" multiple onChange={fileAudioChange} accept='audio/*' />
         </div>
         <div>
-          <button onClick={uploadAudio}>submit</button>
+          <Button onClick={uploadAudio}>submit</Button>
         </div>
         <div>
           {isLoading ? <Spinner /> : null}
         </div>
         <div>{messageToUser}</div>
         <div>
-          <button onClick={handleBackToCollection}>back to your collection</button>
+          <Button onClick={handleBackToCollection}>back to your collection</Button>
         </div>
       </div>
     </div>

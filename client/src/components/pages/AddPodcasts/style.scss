@@ -1,0 +1,33 @@
+.add-podcasts-container{
+  height: 90vh;
+  margin: 0 2rem;
+  margin-top: 10vh;
+  border: 1px solid navy;
+  display: flex;
+  justify-content: center;
+}
+.add-podcasts-inner{
+  margin-top: 2rem;
+  border: 1px solid red;
+  font-size: 2rem;
+
+  input {
+    font-size: 2rem;
+
+  }
+  div {
+    margin: 1rem
+  }
+
+  @media screen and (max-width: 500px) {
+    font-size: 1rem;
+    input {
+      font-size: 1rem;
+  
+    }
+  }
+}
+
+// .add-collection-inner-input-div{
+//   margin: 1rem
+// }

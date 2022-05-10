@@ -2,7 +2,7 @@ import "./style.scss"
 
 const Spinner = () => {
   return (
-    <div>Spinner</div>
+    <div className="spinner"></div>
   )
 }
 

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import jwt from 'jsonwebtoken';
 import podcastApi from '../../Api';
 import PodcastCollectionItem from "../../PodcastCollectionItem"
-import StyledContainer from "../../styledComponents/StyledContainer"
 import Button from '../../styledComponents/Button'
 import "./style.scss"
 
@@ -12,7 +11,8 @@ const Profile = () => {
   const [profileData, setProfileData] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [collectionsList, setCollectionsList] = useState([]);
-  const [visibilty, setVisibilty] = useState("hidden");
+  const [render, setRender] = useState(false);
+
 
 
   const navigate = useNavigate();
@@ -65,49 +65,8 @@ const Profile = () => {
   }
 
 
-  const showDeleteWindow = () => {
-    setVisibilty("visible");
-  }
 
-
-  const handleVisibilty = () => {
-    setVisibilty("hidden");
-  }
-
-  const handleCollectionDelete = async (id) => {
-    try {
-      console.log('hey');
-      const data = await podcastApi.delete(`/${id}/collection`);
-      console.log(data, 'after delete');
-      handleVisibilty();
-      getUserDetails();
-      localStorage.removeItem('collectionsList');
-    } catch (e) {
-      console.log(e)
-    }
-  }
-
-
-
-  // const displayCollections = () => {
-  //   return collectionsList.map((collection) => {
-  //     return <div key={Math.random()}>
-  //       <PodcastCollectionItem imgUrl={collection.imgUrl} title={collection.title} podcasts={collection.podcasts} collectionId={collection._id} />
-  //       <div className='collection-preview-delete-btn'><button onClick={showDeleteWindow}>delete</button></div>
-  //       <div className='delete-window' style={{ visibility: visibilty }}>
-  //         <h2> ARE YOU SURE </h2>
-  //         <div>
-  //           <button onClick={() => handleCollectionDelete(collection._id)} >YES</button><button onClick={handleVisibilty}>NO</button>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   })
-  // }
-
-
-
-
-  const addCollectionHandlre = () => {
+  const handleAddCollection = () => {
     console.log(profileData);
     navigate('/addCollection', { state: profileData });
   }
@@ -120,7 +79,7 @@ const Profile = () => {
         <div className='profile-inner-top'>
           <h2 className='profile-inner-top-welcome'> WELCOME {profileData ? profileData.name : null}</h2>
           <div>
-            <Button onClick={addCollectionHandlre} fontSize="1.6rem" padding="5px">add collection</Button>
+            <Button onClick={handleAddCollection} >add collection</Button>
           </div>
           <div>
             <Button onClick={logout}>log out</Button>
@@ -128,22 +87,17 @@ const Profile = () => {
         </div>
         <div className='profile-collections-list'>
           {!!collectionsList.length && collectionsList.map((collection) => {
-            return <div className='collection-item-container'>
+            return (
               <PodcastCollectionItem
-                key={collection._i}
+                key={collection._id}
                 imgUrl={collection.imgUrl}
                 title={collection.title}
                 podcasts={collection.podcasts}
                 collectionId={collection._id}
-                profile={true} />
-              < div className='collection-preview-delete-btn'><Button onClick={showDeleteWindow}>delete</Button></div>
-              <div className='delete-window' style={{ visibility: visibilty }}>
-                <h2> ARE YOU SURE </h2>
-                <div>
-                  <Button onClick={() => handleCollectionDelete(collection._id)} >YES</Button><Button onClick={handleVisibilty}>NO</Button>
-                </div>
-              </div>
-            </div>
+                profile={true}
+                getUserDetails={getUserDetails} 
+                />
+            )
           })
           }
         </div>

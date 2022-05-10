@@ -9,15 +9,10 @@ import Register from "./pages/Register";
 import AddCollection from "./pages/AddCollection";
 import Collection from "./pages/Collection";
 import AddPodcasts from "./pages/AddPodcasts";
-// import CollectionAll from "./pages/CollectionAll";
 import Navbar from "./Navbar";
 import PodcastCollectionsList from "./pages/PodcastsCollectionsList";
 
-
-
 const App = ()=>{
-
-
 
   return (
     <div>
@@ -31,7 +26,6 @@ const App = ()=>{
           <Route path="/register" element={<Register />} />
           <Route path="/addCollection" element={<AddCollection />} />
           <Route path="/collection" element={<Collection />} />
-          {/* <Route path="/collectionAll" element={<CollectionAll />} /> */}
           <Route path="/addPodcasts" element={<AddPodcasts />} />
         </Routes>
       </BrowserRouter>

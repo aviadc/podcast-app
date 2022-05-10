@@ -1,7 +1,8 @@
-import React , {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import AudioPlayer from '../AudioPlayer';
 import { useNavigate, useLocation } from "react-router-dom";
 import podcastApi from '../Api';
+import Button from '../styledComponents/Button';
 import "./style.scss"
 
 
@@ -46,30 +47,28 @@ const PodcastItem = (props) => {
     }
   }
   return (
-    <>
-      <div className='podcast-item-container'>
-        <div className='podcast-item-up'>
-          <div className='podcast-item-up-img'>
-            <img src={props.imgUrl} alt='podcast-item' width='50px' height='50px' />
-          </div>
-          <div className='podcast-item-up-title'>{props.title}</div>
+    <div className='podcast-item-container'>
+      <div className='podcast-item-up'>
+        <div className='podcast-item-up-img'>
+          <img src={props.imgUrl} alt='podcast-item' width='50px' height='50px' />
         </div>
-        <div className='podcast-item-down'>
-          <AudioPlayer audioLink={props.audioLink} />
-        </div>
+        <div className='podcast-item-up-title'>{props.title}</div>
+      </div>
+      <div className='podcast-item-down'>
+        <AudioPlayer audioLink={props.audioLink} />
       </div>
       {props.profile &&
         <>
-          <div className='collection-delete-btn'><button onClick={showDeleteWindow}>delete</button></div>
+          <div className='collection-delete-btn'><Button onClick={showDeleteWindow}>delete</Button></div>
           <div className='delete-window' style={{ visibility: visibilty }}>
             <h2> ARE YOU SURE?</h2>
             <div>
-              <button onClick={() => handlePodcastDelete(state.collectionId, props.id)} >YES</button><button onClick={handleVisibilty}>NO</button>
+              <Button onClick={() => handlePodcastDelete(state.collectionId, props.id)} >YES</Button><Button onClick={handleVisibilty}>NO</Button>
             </div>
           </div>
         </>
       }
-    </>
+    </div>
   )
 
 }
