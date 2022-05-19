@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
 import PodcastItem from '../../PodcastItem';
 import Button from '../../styledComponents/Button';
@@ -26,6 +26,7 @@ const Collection = () => {
       {state?.profile && <div className='collection-navbar'>
         <Button onClick={handleAddPodcasts} >add podcasts</Button>
         <Button onClick={goBackToProfilePage} >back to profile</Button>
+        <h3>collection size: {state.collectionSize}</h3>
       </div>
       }
       <div className='collection-inner'>
@@ -42,7 +43,7 @@ const Collection = () => {
                   id={podcast._id}
                   profile={state.profile} />
               </div>
-              )
+            )
           })}
         </div>
       </div>

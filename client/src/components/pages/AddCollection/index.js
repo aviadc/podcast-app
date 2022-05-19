@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
 import podcastApi from '../../Api';
 import Spinner from '../../Spinner';
-import StyledContainer from '../../styledComponents/StyledContainer';
 import Button from '../../styledComponents/Button';
 import "./style.scss"
 
@@ -55,7 +54,7 @@ const AddCollection = () => {
   }
 
   const uploadCollection = async () => {
-    console.log(imageFile);
+    console.log(audioFiles);
     if (!validDetails()) {
       return
     }
@@ -81,14 +80,21 @@ const AddCollection = () => {
   }
 
   const validDetails = () => {
-    if(imageFile.type.slice(0,5)!=="image"){
-      setMessageToUser('error image type!');
-      return null
-    }
     if (!(imageFile && audioFiles && collectionTitle)){
       setMessageToUser('missing details');
       return null
     }
+    if(imageFile.type.slice(0,5)!=="image"){
+      setMessageToUser('error image type!');
+      return null
+    }
+    for(let i =0;i<audioFiles.length;i++){
+      if(audioFiles[i].slice(0,5)!=="audio"){
+        setMessageToUser('error audio type!');
+        return null
+      }
+    }
+    return true
   }
 
 

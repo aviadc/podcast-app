@@ -11,9 +11,7 @@ const Profile = () => {
   const [profileData, setProfileData] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [collectionsList, setCollectionsList] = useState([]);
-  const [render, setRender] = useState(false);
-
-
+  
 
   const navigate = useNavigate();
 
@@ -95,6 +93,7 @@ const Profile = () => {
                 podcasts={collection.podcasts}
                 collectionId={collection._id}
                 profile={true}
+                collectionSize={collection.size}
                 getUserDetails={getUserDetails} 
                 />
             )

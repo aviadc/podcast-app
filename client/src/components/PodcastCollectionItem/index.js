@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import podcastApi from '../Api';
 import Button from '../styledComponents/Button';
 import "./style.scss"
@@ -16,11 +16,11 @@ function PodcastCollectionItem(props) {
     console.log(props, "props")
     navigate('/collection', {
       state: {
-    imgUrl: props.imgUrl,
-    title: props.title,
-    podcasts: props.podcasts,
-    collectionId: props._id,
-    profile: props.profile
+        imgUrl: props.imgUrl,
+        title: props.title,
+        podcasts: props.podcasts,
+        collectionId: props._id,
+        profile: props.profile
       }
     });
   }
