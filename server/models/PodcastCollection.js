@@ -47,9 +47,13 @@ const PodcastCollectionSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
+    unique: true,
   },
   details:{
     type: String
+  },
+  size:{
+    type: Number
   }
 });
 

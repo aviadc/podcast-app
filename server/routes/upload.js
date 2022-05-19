@@ -79,9 +79,9 @@ router.post('/:id/upload/image',uploadImageMulter.single('image'),async (req,res
         const collection = await PodcastCollection.findById(req.params.id);
         console.log('after collection');
         const imageData = await uploadImage(`${collection.title}_${req.file.originalname}`,bucket,req.file.buffer);
+        console.log("imageDataserver",imageData);
         await collection.updateOne({imgUrl: imageData.Location},{new:true}); 
-        res.send(collection);
-     
+        res.status(200).send(collection);
     }catch(e){
         res.status(404).send(e.message)
     }
@@ -96,6 +96,7 @@ router.post('/:id/upload/image',uploadImageMulter.single('image'),async (req,res
         const collection = await PodcastCollection.findById(req.params.id);
         const arr = await Promise.all(req.files.map(async (file)=>{
             const audioData = await uploadAudio(`${collection.title}_${file.originalname}`,bucket,file.buffer);
+            console.log(`audioarrserver${Math.random()}`,audioData);
             collection.podcasts.push(new PodcastItem({title: audioData.Key,audioLink: audioData.Location}));
         })); 
         await collection.save();

@@ -6,17 +6,16 @@ const Home = () => {
   return (
     <>
       <div className='page-background'></div>
-      <StyledContainer>
+      <div className='home-container'>
         <div className='home-inner'>
           <div className='home-inner-wrapper'>
-            <h3 className=''>welcome to podco</h3>
-            <h3 className=''>the ultimate podcast website</h3>
-            <h3 className=''>in podco you can create your </h3>
-            <h3 className=''>own podcast channel for free!</h3>
-            <h3 className=''>spread the word!</h3>
+            <h3>welcome to podco!</h3>
+            <h3>in podco you can create</h3>
+            <h3>your own podcast</h3>
+            <h3>channel for free!</h3>
           </div>
         </div>
-      </StyledContainer >
+      </div>
     </>
   )
 }

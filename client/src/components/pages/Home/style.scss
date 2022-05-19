@@ -10,19 +10,28 @@
   background-repeat: no-repeat; 
 }
 
+.home-container{
+  margin: 0 2rem;
+  margin-top: 10vh;
+  height: 90vh;
+  border: 1px solid blue;
+}
+
 .home-inner{
   height: 50px;
   overflow: hidden;
+  border: 1px solid red ;
 }
 
 
 .home-inner-wrapper{
   height: 100%;
+  
   animation: move 10s ease-in-out infinite alternate;
 
   h3 {
     height: 50px;
-    font-size: xx-large;
+    font-size: 3rem;
   }
 
   @keyframes move {

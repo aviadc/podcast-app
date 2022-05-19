@@ -75,5 +75,5 @@ export const MenuButtonContainer = styled.div`
 export const NavbarMenuNarrowLinksContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* border: 1px solid yellow; */
+  background-color: green;
 `

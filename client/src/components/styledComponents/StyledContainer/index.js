@@ -7,7 +7,7 @@ const StyledContainer = styled.div`
   align-items: center;
   margin: 0 2rem;
   margin-top: 10vh;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 `
 
 export default StyledContainer
