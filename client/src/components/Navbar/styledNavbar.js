@@ -27,6 +27,7 @@ export const NavbarLink = styled(Link)`
   text-decoration: none;
   transition: all 0.3s ease-in-out;
   margin: 10px;
+  color: black;
 
   &:hover{
     transform: scale(1.1);
@@ -75,5 +76,5 @@ export const MenuButtonContainer = styled.div`
 export const NavbarMenuNarrowLinksContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: green;
+  background-color: gold;
 `

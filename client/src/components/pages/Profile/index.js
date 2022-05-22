@@ -77,10 +77,10 @@ const Profile = () => {
         <div className='profile-inner-top'>
           <h2 className='profile-inner-top-welcome'> WELCOME {profileData ? profileData.name : null}</h2>
           <div>
-            <Button onClick={handleAddCollection} >add collection</Button>
+            <Button onClick={handleAddCollection} fontSize="1rem" >add collection</Button>
           </div>
           <div>
-            <Button onClick={logout}>log out</Button>
+            <Button onClick={logout} fontSize="1rem">log out</Button>
           </div>
         </div>
         <div className='profile-collections-list'>

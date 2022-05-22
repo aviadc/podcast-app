@@ -59,7 +59,7 @@ const PodcastItem = (props) => {
       </div>
       {props.profile &&
         <>
-          <div className='collection-delete-btn'><Button onClick={showDeleteWindow}>delete</Button></div>
+          <div className='collection-delete-btn'><Button onClick={showDeleteWindow} fontSize="1rem">delete</Button></div>
           <div className='delete-window' style={{ visibility: visibilty }}>
             <h2> ARE YOU SURE?</h2>
             <div>

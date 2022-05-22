@@ -5,7 +5,7 @@ import './style.scss'
 const Home = () => {
   return (
     <>
-      <div className='page-background'></div>
+      <div className='page-background-1'></div>
       <div className='home-container'>
         <div className='home-inner'>
           <div className='home-inner-wrapper'>

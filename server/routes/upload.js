@@ -8,6 +8,8 @@ const upload = multer({storage});
 const dotenv = require('dotenv');
 const { Promise } = require('mongoose');
 
+let filesSize = 0;
+
 dotenv.config();
 
 const bucket = process.env.BUCKET_NAME;
@@ -65,7 +67,6 @@ const uploadImageMulter = multer({
         if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
             return cb(new Error('Please upload an image'))
         }
-
         cb(undefined, true)
     }
 })
@@ -77,10 +78,12 @@ router.post('/:id/upload/image',uploadImageMulter.single('image'),async (req,res
     console.log('im in post express')
     try{
         const collection = await PodcastCollection.findById(req.params.id);
-        console.log('after collection');
+        console.log('after collection image server',req.file);
         const imageData = await uploadImage(`${collection.title}_${req.file.originalname}`,bucket,req.file.buffer);
         console.log("imageDataserver",imageData);
-        await collection.updateOne({imgUrl: imageData.Location},{new:true}); 
+        filesSize+=req.file.size;
+        console.log("image size server",filesSize);
+        await collection.updateOne({imgUrl: imageData.Location, size: req.file.size, imgStorageKey: imageData.Key},{new:true});  
         res.status(200).send(collection);
     }catch(e){
         res.status(404).send(e.message)
@@ -90,18 +93,19 @@ router.post('/:id/upload/image',uploadImageMulter.single('image'),async (req,res
   })
 
   .post('/:id/upload/audio',upload.array('audio',10),async (req,res)=>{
-      console.log(req.params);
-    //   const arr = [];
       try{
         const collection = await PodcastCollection.findById(req.params.id);
-        const arr = await Promise.all(req.files.map(async (file)=>{
+        await Promise.all(req.files.map(async (file)=>{
             const audioData = await uploadAudio(`${collection.title}_${file.originalname}`,bucket,file.buffer);
             console.log(`audioarrserver${Math.random()}`,audioData);
-            collection.podcasts.push(new PodcastItem({title: audioData.Key,audioLink: audioData.Location}));
+            filesSize+=file.size;
+            console.log("audio size server",filesSize);
+            collection.podcasts.push(new PodcastItem({title: audioData.Key,audioLink: audioData.Location,podcastStorageKey: audioData.Key}));
+            await collection.updateOne({$inc: {"size": file.size}}); 
         })); 
+        console.log("final size server",filesSize);
         await collection.save();
         res.status(200).send(collection);
-        //   console.log('data');
       }catch(e){
           console.log('error')
           res.status(400).send(e.message);
@@ -112,6 +116,7 @@ router.post('/:id/upload/image',uploadImageMulter.single('image'),async (req,res
 
     .post('/:id/upload/title',async(req,res)=>{
         try{
+            console.log("req body upload title",req.body)
             const duplicatTitle = await PodcastCollection.findOne({title: req.body.title});
             if(duplicatTitle){
                 throw new Error('title error');
@@ -119,8 +124,8 @@ router.post('/:id/upload/image',uploadImageMulter.single('image'),async (req,res
             const collection = new PodcastCollection({user: req.params.id,title:req.body.title});
             const data = await collection.save()
             res.send(data);
-        }catch(e){
-            res.status(400).send(e.message);
+        }catch(err){
+            res.status(400).send(err.message);
         }
   })
   

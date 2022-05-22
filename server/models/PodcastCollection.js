@@ -29,6 +29,9 @@ const PodcastItemSchema = new mongoose.Schema({
   comments: {
     type:[PodcastCommentSchema]
   },
+  podcastStorageKey:{
+    type: String
+  }
 
 })
 
@@ -40,6 +43,9 @@ const PodcastCollectionSchema = new mongoose.Schema({
   },
   imgUrl:{
       type: String
+  },
+  imgStorageKey:{
+    type: String
   },
   podcasts:{
     type: [PodcastItemSchema],

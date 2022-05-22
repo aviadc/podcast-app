@@ -12,70 +12,83 @@ const AddPodcasts = () => {
   const [messageToUser, setMessageToUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-
   const navigate = useNavigate();
   const { state } = useLocation();
+
+  let filesSize = 0;
 
   const handleBackToCollection = () => {
     navigate('/collection', { state: state });
   }
 
-  const fileAudioChange = (e) => {
-    const file = Object.values(e.target.files);
-    setAudioFiles(file);
-  }
-
   const uploadAudio = async () => {
     if (!validDetails()) {
-      setMessageToUser("you didn't choose files");
       return
     }
+    setIsLoading(true);
+    setMessageToUser('');
+    const audioFilesData = new FormData();
+    audioFiles.forEach((audio) => {
+      audioFilesData.append('audio', audio);
+    })
     try {
-      setIsLoading(true);
-      setMessageToUser('');
-      const data = new FormData();
-      audioFiles.forEach((audio) => {
-        data.append('audio', audio);
-      })
-      const audioData = await podcastApi.post(`${state.collectionId}/upload/audio`, data);
+      const audioData = await podcastApi.post(`${state.collectionId}/upload/audio`, audioFilesData);
       console.log(audioData, 'audiodata');
       state.podcasts = [...audioData.data.podcasts];
       localStorage.removeItem('collectionsList');
       setIsLoading(false);
       setMessageToUser('upload successfully ');
-    } catch (e) {
+    } catch (err) {
       setIsLoading(false);
-      console.log(e.message)
-      setMessageToUser(e.message);
+      console.log(err.message)
+      setMessageToUser(err.message);
     }
 
   }
 
   const validDetails = () => {
-    return audioFiles;
+    if (!audioFiles) {
+      setMessageToUser('missing details');
+      return null;
+    }
+    for (let i = 0; i < audioFiles.length; i++) {
+      filesSize += audioFiles[i].size;
+      if (audioFiles[i].type.slice(0, 5) !== "audio") {
+        setMessageToUser('error audio type!');
+        return null;
+      }
+    }
+    if (filesSize > 25000000 - state.collectionSize) {
+      setMessageToUser('you have been over the collection size limit');
+      return null;
+    }
+    return true
   }
 
 
 
   return (
-    <div className='add-podcasts-container'>
-      <div className='add-podcasts-inner'>
-        <h2>add podcasts</h2>
-        <div>
-          Add Audio <input type="file" multiple onChange={fileAudioChange} accept='audio/*' />
-        </div>
-        <div>
-          <Button onClick={uploadAudio}>submit</Button>
-        </div>
-        <div>
-          {isLoading ? <Spinner /> : null}
-        </div>
-        <div>{messageToUser}</div>
-        <div>
-          <Button onClick={handleBackToCollection}>back to your collection</Button>
+    <>
+      <div className='page-background-2'></div>
+      <div className='add-podcasts-container'>
+        <div className='add-podcasts-inner'>
+          <h2>add podcasts</h2>
+          <div>
+            Add Audio <input type="file" multiple onChange={(e) => setAudioFiles(Object.values(e.target.files))} accept='audio/*' />
+          </div>
+          <div>
+            <Button onClick={uploadAudio} fontSize="1.6rem">submit</Button>
+          </div>
+          <div>
+            {isLoading ? <Spinner /> : null}
+          </div>
+          <div style={{color: "red"}}>{messageToUser}</div>
+          <div>
+            <Button onClick={handleBackToCollection} fontSize="1.6rem">back to your collection</Button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 
 }

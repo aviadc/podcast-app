@@ -32,7 +32,7 @@ const PodcastCollectionsList = () => {
 
   return (
     <>
-      <div className='page-background'></div>
+      <div className='page-background-1'></div>
       <StyledContainer>
         <div className='collection-list-container'>
           {!!collectionsList.length && collectionsList.map((collection) => {

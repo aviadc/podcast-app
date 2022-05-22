@@ -35,7 +35,7 @@ const Register = () => {
 
   return (
     <>
-      <div className='register-page'>  </div>
+      <div className='page-background-1'></div>
       <div className='register-container'>
         <div className='register-inner'>
           <div>

@@ -31,7 +31,7 @@ const Login = () => {
   }
   return (
     <>
-      <div className='login-page'> </div>
+      <div className='page-background-1'> </div>
       <div className='login-container'>
         <div className='login-inner'>
           <div>

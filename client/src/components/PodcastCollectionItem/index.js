@@ -19,8 +19,9 @@ function PodcastCollectionItem(props) {
         imgUrl: props.imgUrl,
         title: props.title,
         podcasts: props.podcasts,
-        collectionId: props._id,
-        profile: props.profile
+        collectionId: props.collectionId,
+        profile: props.profile,
+        collectionSize: props.collectionSize
       }
     });
   }
@@ -58,7 +59,7 @@ function PodcastCollectionItem(props) {
       </div>
       {props.profile &&
         <>
-          <div className='collection-delete-btn'><Button onClick={showDeleteWindow}>delete</Button></div>
+          <div className='collection-delete-btn'><Button onClick={showDeleteWindow} fontSize="1rem">delete</Button></div>
           <div className='delete-window' style={{ visibility: visibilty }}>
             <h2> ARE YOU SURE?</h2>
             <div>
