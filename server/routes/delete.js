@@ -4,7 +4,7 @@ const AWS = require('aws-sdk');
 const dotenv = require('dotenv');
 
 const s3 = new AWS.S3({
-  accessKeyId: process.env.ACCESS_KEY_ID ,
+  accessKeyId: process.env.ACCESS_KEY_ID,
   secretAccessKey: process.env.SECRET_ACCESS_KEY
 })
 
@@ -56,28 +56,30 @@ router.delete('/:id/collection', async (req, res) => {
 
   .delete('/:collectionId/:podcastId/podcast', async (req, res) => {
     try {
-      console.log(req.params);
       const collection = await PodcastCollection.findOne({ _id: req.params.collectionId });
       newPodcastList = await Promise.all(collection.podcasts.filter((podcast) => {
         return podcast._id.toString() !== req.params.podcastId.toString();
       }))
-      console.log(collection, "before");
-      console.log(newPodcastList, "after");
-      const podcastToDelete = collection.podcasts.find(podcast=>podcast._id.toString()===req.params.podcastId.toString())
-      console.log("podcasttodelete",podcastToDelete);
+      const podcastToDelete = collection.podcasts.find(podcast => podcast._id.toString() === req.params.podcastId.toString())
       collection.podcasts = [...newPodcastList];
-      collection.save();
       const params = {
         Bucket: process.env.BUCKET_NAME,
         Delete: {
-          Objects: [{Key: podcastToDelete.podcastStorageKey}]
+          Objects: [{ Key: podcastToDelete.podcastStorageKey }]
         }
       }
       s3.deleteObjects(params, function (err, data) {
         if (err) console.log(err, err.stack); // an error occurred
         else console.log(data);           // successful response
       });
-      res.send(collection);
+      s3.headObject({ Bucket: process.env.BUCKET_NAME, Key: podcastToDelete.podcastStorageKey }, async (err, data) => {
+        if (err) console.log(err, err.stack); // an error occurred
+        else {
+          await collection.updateOne({ $inc: { "size": -data.ContentLength } });
+          await collection.save();
+          res.send({ deletedPodcastSize: data.ContentLength });
+        }
+      });
     } catch (e) {
       res.status(404).send(e.message)
     }

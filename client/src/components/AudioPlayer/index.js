@@ -1,69 +1,72 @@
-import React ,{useState,useRef,useEffect} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import "./style.scss"
-import {AiOutlineArrowLeft} from "react-icons/ai"
-import {AiOutlineArrowRight} from "react-icons/ai"
-import {FaPlay} from "react-icons/fa"
-import {FaPause} from "react-icons/fa"
+import { AiOutlineArrowLeft } from "react-icons/ai"
+import { AiOutlineArrowRight } from "react-icons/ai"
+import { FaPlay } from "react-icons/fa"
+import { FaPause } from "react-icons/fa"
 
 
-const AudioPlayer = (props)=> {
+const AudioPlayer = (props) => {
   // state
-  const [isPlaying,setIsPlaying] = useState(false);
-  const [duration,setDuration] = useState(0);
-  const [currentTime,setCurrentTime] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
 
   //ref
   const audioPlayer = useRef(); //ref to the audio tag
-  const progressBar = useRef(); //ref to our progress bar
+  let progressBar = useRef(); //ref to our progress bar
   const animationRef = useRef() //ref to animation
 
-  useEffect(()=>{
+  useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration)
     setDuration(seconds);
     progressBar.current.max = seconds;
-  },[audioPlayer?.current?.loadedmetadata,audioPlayer?.current?.readyState]);//check if the audio has been loaded
+  }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);//check if the audio has been loaded
 
 
-  const togglePlayPause = (e)=>{  //define the play/pasue button
+  const togglePlayPause = (e) => {  //define the play/pasue button
     const prevValue = isPlaying //because useState is async and we want the current state
-   setIsPlaying(!prevValue);
-   if(!prevValue){
-     audioPlayer.current.play();
-     animationRef.current = requestAnimationFrame(whilePlaying)
-   }else{
-     audioPlayer.current.pause();
-     cancelAnimationFrame(animationRef.current)
-   }
+    setIsPlaying(!prevValue);
+    if (!prevValue) {
+      audioPlayer.current.play();
+      animationRef.current = requestAnimationFrame(whilePlaying)
+    } else {
+      audioPlayer.current.pause();
+      cancelAnimationFrame(animationRef.current)
+    }
   }
 
-  const whilePlaying = ()=>{
+  const whilePlaying = () => {
+    if (audioPlayer.current===null) {
+      return
+    }
     progressBar.current.value = audioPlayer.current.currentTime;
-    progressBar.current.style.setProperty('--width-before-slider',`${progressBar.current.value/duration *100}%`)
+    progressBar.current.style.setProperty('--width-before-slider', `${progressBar.current.value / duration * 100}%`)
     setCurrentTime(progressBar.current.value);
     animationRef.current = requestAnimationFrame(whilePlaying)
   }
 
-  const changeRange = ()=>{
+  const changeRange = () => {
     audioPlayer.current.currentTime = progressBar.current.value;
     setCurrentTime(progressBar.current.value)
-    progressBar.current.style.setProperty('--width-before-slider',`${progressBar.current.value/duration *100}%`)
+    progressBar.current.style.setProperty('--width-before-slider', `${progressBar.current.value / duration * 100}%`)
   }
 
-  const calculateTime = (sec)=>{
+  const calculateTime = (sec) => {
     const minutes = Math.floor(sec / 60);
-    const returnMinutes = minutes < 10? `0${ minutes}` : `{${ minutes}}`
+    const returnMinutes = minutes < 10 ? `0${minutes}` : `{${minutes}}`
     const seconds = Math.floor(sec % 60);
-    const returnSeconds = seconds < 10? `0${seconds}` : `${seconds}`
+    const returnSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`
     return `${returnMinutes}:${returnSeconds}`;
   }
 
-  const backThirty = ()=>{ //button back 30 sec
-    progressBar.current.value = Number(progressBar.current.value)-30;
+  const backThirty = () => { //button back 30 sec
+    progressBar.current.value = Number(progressBar.current.value) - 30;
     changeRange()
   }
 
-  const forwardThirty = ()=>{ //button back 30 sec
-    progressBar.current.value = Number(progressBar.current.value)+30;
+  const forwardThirty = () => { //button back 30 sec
+    progressBar.current.value = Number(progressBar.current.value) + 30;
     changeRange()
   }
 
@@ -77,7 +80,7 @@ const AudioPlayer = (props)=> {
       <button className='forward-backward' onClick={forwardThirty}><AiOutlineArrowRight /> 30</button>
 
       {/* current time */}
-      <div className='current-time'>{calculateTime(currentTime )}</div>
+      <div className='current-time'>{calculateTime(currentTime)}</div>
 
       {/* progress bar */}
       <input type='range' className='progress-bar' defaultValue='0' ref={progressBar} onChange={changeRange} />
@@ -85,7 +88,7 @@ const AudioPlayer = (props)=> {
       {/*{(duration&&!isNaN(duration))&&calculateTime(duration)} */}
 
       {/* duration */}
-      <div className='duration'>{!isNaN(duration)&&calculateTime(duration)}</div> {/*check if duration has been loaded and duration is number*/}
+      <div className='duration'>{!isNaN(duration) && calculateTime(duration)}</div> {/*check if duration has been loaded and duration is number*/}
     </div>
   )
 }

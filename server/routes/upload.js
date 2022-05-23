@@ -55,8 +55,6 @@ const uploadImage =(filename,bucketname, file)=>{
                }
             })
     })
-    
-   
 }
 
 const uploadImageMulter = multer({
@@ -95,6 +93,7 @@ router.post('/:id/upload/image',uploadImageMulter.single('image'),async (req,res
   .post('/:id/upload/audio',upload.array('audio',10),async (req,res)=>{
       try{
         const collection = await PodcastCollection.findById(req.params.id);
+        let filesSize = 0;
         await Promise.all(req.files.map(async (file)=>{
             const audioData = await uploadAudio(`${collection.title}_${file.originalname}`,bucket,file.buffer);
             console.log(`audioarrserver${Math.random()}`,audioData);
@@ -102,13 +101,13 @@ router.post('/:id/upload/image',uploadImageMulter.single('image'),async (req,res
             console.log("audio size server",filesSize);
             collection.podcasts.push(new PodcastItem({title: audioData.Key,audioLink: audioData.Location,podcastStorageKey: audioData.Key}));
             await collection.updateOne({$inc: {"size": file.size}}); 
-        })); 
-        console.log("final size server",filesSize);
+        }));
+        console.log("audio size server",filesSize);
         await collection.save();
-        res.status(200).send(collection);
-      }catch(e){
+        res.status(200).send({collection,filesSize});
+      }catch(err){
           console.log('error')
-          res.status(400).send(e.message);
+          res.status(400).send(err.message);
       }
   },(error,req,res,next)=>{
     res.status(409).send({ error: error.message })

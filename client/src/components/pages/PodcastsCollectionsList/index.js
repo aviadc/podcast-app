@@ -15,14 +15,12 @@ const PodcastCollectionsList = () => {
       if (!list) {
         try {
           const { data } = await podcastApi.get('/podcasts');
-          console.log(data, 'dataArr');
           localStorage.setItem('collectionsList', JSON.stringify(data));
           setCollectionsList(data);
-        } catch (e) {
-          console.log(e.message);
+        } catch (err) {
+          console.log(err.message);
         }
       } else {
-        console.log(JSON.parse((localStorage.getItem('collectionsList'))), 'json local');
         setCollectionsList(JSON.parse((localStorage.getItem('collectionsList'))));
       }
     }

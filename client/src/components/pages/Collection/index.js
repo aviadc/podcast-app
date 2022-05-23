@@ -10,7 +10,7 @@ const Collection = () => {
   const { state } = useLocation();
 
   useEffect(() => {
-    console.log(state, 'state collection');
+
   }, [state])
 
   const goBackToProfilePage = () => {
@@ -43,6 +43,7 @@ const Collection = () => {
                     title={podcast.title}
                     imgUrl={state.imgUrl}
                     id={podcast._id}
+                    collectionSize={state.collectionSize}
                     profile={state.profile} />
                 </div>
               )

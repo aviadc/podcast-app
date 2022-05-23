@@ -32,9 +32,9 @@ const AddPodcasts = () => {
       audioFilesData.append('audio', audio);
     })
     try {
-      const audioData = await podcastApi.post(`${state.collectionId}/upload/audio`, audioFilesData);
-      console.log(audioData, 'audiodata');
-      state.podcasts = [...audioData.data.podcasts];
+      const {data} = await podcastApi.post(`${state.collectionId}/upload/audio`, audioFilesData);
+      state.podcasts = [...data.collection.podcasts];
+      state.collectionSize =  state.collectionSize + data.filesSize //return to page "collection" the updated size
       localStorage.removeItem('collectionsList');
       setIsLoading(false);
       setMessageToUser('upload successfully ');
@@ -59,7 +59,7 @@ const AddPodcasts = () => {
       }
     }
     if (filesSize > 25000000 - state.collectionSize) {
-      setMessageToUser('you have been over the collection size limit');
+      setMessageToUser('you have reached the maximum size of 25mb');
       return null;
     }
     return true
@@ -82,7 +82,7 @@ const AddPodcasts = () => {
           <div>
             {isLoading ? <Spinner /> : null}
           </div>
-          <div style={{color: "red"}}>{messageToUser}</div>
+          <div className='message-to-user'>{messageToUser}</div>
           <div>
             <Button onClick={handleBackToCollection} fontSize="1.6rem">back to your collection</Button>
           </div>

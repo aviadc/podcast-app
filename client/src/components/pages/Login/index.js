@@ -18,15 +18,13 @@ const Login = () => {
     const user = {
       email, password
     }
-    console.log('user', user);
     try {
       const { data } = await podcastApi.post('/login', user);
-      console.log('data', data);
       localStorage.setItem('token', data);
       navigate('/profile');
-    } catch (e) {
+    } catch (err) {
       setMessageToTheUser('wrong credentials')
-      console.log(e.message);
+      console.log(err.message);
     }
   }
   return (
@@ -44,7 +42,7 @@ const Login = () => {
             <div>
               <input type={'password'} placeholder='password' onChange={(e) => setPassword(e.target.value)} />
             </div>
-            <div className='message-to-the-user'>{messageToTheUser}</div>
+            <div className='message-to-user'>{messageToTheUser}</div>
             <div>
               <Button onClick={handleLogin} fontSize="1.6rem">login</Button>
             </div>

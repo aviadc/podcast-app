@@ -14,13 +14,11 @@
   margin: 0 2rem;
   margin-top: 10vh;
   height: 90vh;
-  // border: 1px solid blue;
 }
 
 .home-inner{
   height: 100px;
   overflow: hidden;
-  // border: 1px solid red ;
 }
 
 
@@ -50,8 +48,5 @@
     100% {
       transform: translateY(-300px);
     }
-    // 100% {
-    //   transform: translateY(-400px);
-    // }
   }
 }

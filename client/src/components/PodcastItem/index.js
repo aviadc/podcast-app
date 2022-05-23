@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import AudioPlayer from '../AudioPlayer';
 import { useNavigate, useLocation } from "react-router-dom";
 import podcastApi from '../Api';
@@ -13,10 +13,6 @@ const PodcastItem = (props) => {
   const navigate = useNavigate();
   const { state } = useLocation();
 
-  useEffect(() => {
-    // console.log(state, 'state podcast item');
-    console.log(props, 'props podcast item');
-  })
 
   const showDeleteWindow = () => {
     setVisibilty("visible");
@@ -29,21 +25,19 @@ const PodcastItem = (props) => {
 
 
   const handlePodcastDelete = async (collectionId, podcastId) => {
-    console.log('inside podcast delete');
     try {
-      await podcastApi.delete(`/${collectionId}/${podcastId}/podcast`, { collectionId: collectionId });
-      console.log('after api call');
+      const {data} = await podcastApi.delete(`/${collectionId}/${podcastId}/podcast`, { collectionId: collectionId });
+      console.log("deleted podcasts data",data);
       const newpodcastsList = state.podcasts.filter((podcast) => {
         return podcast._id.toString() !== podcastId.toString();
       })
-      console.log(newpodcastsList, 'newpodcast list');
-      handleVisibilty();
       state.podcasts = [...newpodcastsList];
-      console.log(state, 'state');
+      state.collectionSize = state.collectionSize - data.deletedPodcastSize //return to page "collection" the updated size
+      handleVisibilty();
       navigate('/collection', { state: state }); //update the state for the podcasts list
       localStorage.removeItem('collectionsList');
-    } catch (e) {
-      console.log(e)
+    } catch (err) {
+      console.log(err.message)
     }
   }
   return (

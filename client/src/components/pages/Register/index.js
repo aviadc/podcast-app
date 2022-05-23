@@ -2,33 +2,54 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import podcastApi from '../../Api';
 import Button from '../../styledComponents/Button';
+import validator from 'validator';
 import "./style.scss"
 
 
 const Register = () => {
 
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [nameError, setNameError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-
+ 
   const navigate = useNavigate();
 
   const submit = async (e) => {
     e.preventDefault();
+    if(!validDetails()){
+      return
+    }
     const user = {
       name, email, password
     }
-    console.log('user', user);
     try {
-      const data = await podcastApi.post('/register', user);
-      console.log('data', data);
+      await podcastApi.post('/register', user);
       navigate('/login');
-    } catch (e) {
-      console.log(e.message);
+    } catch (err) {
+      console.log(err.message);
     }
+  }
+
+  const validDetails = ()=>{
+    setNameError('')
+    setPasswordError('')
+    setEmailError('');
+    if(!name){
+      setNameError('name error!')
+      return null
+    }
+    if(!validator.isEmail(email)){
+      setEmailError('email error!');
+      return null
+    }
+    if(password.length<6){
+      setPasswordError('password error!')
+      return null;
+    }
+    return true;
   }
 
 
@@ -46,14 +67,14 @@ const Register = () => {
               <input placeholder='name' onChange={(e) => setName(e.target.value)} />
             </div>
             <div>
-              <div>{nameError}</div>
+              <div className='message-to-user'>{nameError}</div>
               <input placeholder='email' onChange={(e) => setEmail(e.target.value)} />
             </div>
-            <div>{emailError}</div>
+            <div className='message-to-user'>{emailError}</div>
             <div>
               <input type={'password'} placeholder='password: 6 characters min' onChange={(e) => setPassword(e.target.value)} />
             </div>
-            <div>{passwordError}</div>
+            <div className='message-to-user'>{passwordError}</div>
             <div>
               <Button onClick={submit} fontSize="1.6rem">submit</Button>
             </div>

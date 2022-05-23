@@ -26,7 +26,6 @@ const AddCollection = () => {
     const data = new FormData();
     data.append('image', imageFile);
     try {
-      console.log("image", data);
       await podcastApi.post(`${collectionId}/upload/image`, data);
     } catch (err) {
       console.log(err)
@@ -39,8 +38,6 @@ const AddCollection = () => {
       audioFilesData.append('audio', audio);
     })
     try {
-      console.log("audio", audioFilesData);
-      console.log("filesSize", filesSize);
       await podcastApi.post(`${collectionId}/upload/audio`, audioFilesData);
     } catch (err) {
       console.log(err)
@@ -57,7 +54,6 @@ const AddCollection = () => {
   }
 
   const uploadCollection = async () => {
-    console.log(audioFiles);
     if (!validDetails()) {
       return
     }
@@ -68,10 +64,8 @@ const AddCollection = () => {
       if (!data) {
         throw new Error('title error! try another title');
       }
-      const imgData = await uploadImage(data._id);
-      const audioData = await uploadAudio(data._id);
-      console.log("imageclientdata", imgData);
-      console.log("audioclientdata", audioData);
+      await uploadImage(data._id);
+      await uploadAudio(data._id);
       setIsLoading(false);
       localStorage.removeItem('collectionsList');
       setMessageToUser('upload successfully ');
@@ -80,7 +74,6 @@ const AddCollection = () => {
       console.log(err.message)
       setMessageToUser(err.message);
     }
-    console.log(filesSize, "filesize after upload every thing");
   }
 
   const validDetails = () => {
@@ -88,7 +81,6 @@ const AddCollection = () => {
       setMessageToUser('missing details');
       return null;
     }
-    // let filesSize = 0;
     if (imageFile.type.slice(0, 5) !== "image") {
       setMessageToUser('error image type!');
       return null;
@@ -102,11 +94,9 @@ const AddCollection = () => {
       }
     }
     if (filesSize > 25000000 - state.collectionSize) {
-      setMessageToUser('you have been over the collection size limit');
+      setMessageToUser('you have reached the maximum size of 25mb');
       return null;
     }
-    // console.log("tempFileSize",typeof tempFilesSize);
-    // setFilesSize(prev=>prev+tempFilesSize);
     return true
   }
 
@@ -133,7 +123,7 @@ const AddCollection = () => {
           <div>
             {isLoading ? <Spinner /> : null}
           </div>
-          <div style={{color: "red"}}>{messageToUser}</div>
+          <div className='message-to-user'>{messageToUser}</div>
           <div>
             <Button onClick={handleBackToProfile} padding="10px" fontSize="1.6rem">back to profile</Button>
           </div>

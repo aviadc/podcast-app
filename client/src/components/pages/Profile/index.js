@@ -16,7 +16,6 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const getUserDetails = async () => {
-    console.log("in the get user detail", Math.random())
     try {
       const { data } = await podcastApi.get('/profile', {
         headers: {
@@ -25,12 +24,11 @@ const Profile = () => {
       });
       setProfileData(data)
       const dataArr = await podcastApi.get(`/${data._id}/podcasts`);
-      console.log(dataArr, 'dataArr');
       setCollectionsList(dataArr.data);
       setLoggedIn(true);
 
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      console.log(err.message);
     }
   }
 
@@ -43,7 +41,6 @@ const Profile = () => {
           localStorage.removeItem('token');
           navigate('/login');
         } else {
-          console.log(loggedIn);
           if (!loggedIn) {
             getUserDetails();
           }
@@ -51,7 +48,6 @@ const Profile = () => {
       } else {
         navigate('/login');
       }
-
     }
     innerUseEffect();
   }
@@ -65,7 +61,6 @@ const Profile = () => {
 
 
   const handleAddCollection = () => {
-    console.log(profileData);
     navigate('/addCollection', { state: profileData });
   }
 

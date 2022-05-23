@@ -13,7 +13,6 @@ function PodcastCollectionItem(props) {
 
 
   const handleGoToCollection = () => {
-    console.log(props, "props")
     navigate('/collection', {
       state: {
         imgUrl: props.imgUrl,
@@ -27,7 +26,6 @@ function PodcastCollectionItem(props) {
   }
 
   const showDeleteWindow = () => {
-    console.log(props, "props")
     setVisibilty("visible");
   }
 
@@ -38,14 +36,12 @@ function PodcastCollectionItem(props) {
 
   const handleCollectionDelete = async (id) => {
     try {
-      console.log('hey');
-      const data = await podcastApi.delete(`/${id}/collection`);
-      console.log(data, 'after delete');
+      await podcastApi.delete(`/${id}/collection`);
       handleVisibilty();
       props.getUserDetails();
       localStorage.removeItem('collectionsList');
-    } catch (e) {
-      console.log(e)
+    } catch (err) {
+      console.log(err.message)
     }
   }
 
