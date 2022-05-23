@@ -35,8 +35,6 @@ export const NavbarLink = styled(Link)`
 
 export const NavbarNarrow = styled.div`
   height: 100%;
-  backdrop-filter: blur(5px);
-  
   
   @media screen and (min-width: 500px) {
     display: none;
