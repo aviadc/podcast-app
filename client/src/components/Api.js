@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let myUrl = 'http://localhost:5000/api/user/'; //development
+let myUrl = 'http://localhost:8080/api/user/'; //development
 
 if (process.env.NODE_ENV === 'production') {
   myUrl = 'api/user';
