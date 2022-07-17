@@ -11,6 +11,7 @@ const PodcastCollectionsList = () => {
 
   useEffect(() => {
     async function innerUseEffect() {
+      console.log("im in podcasts page in use effect");
       const list = localStorage.getItem('collectionsList');
       if (!list) {
         try {
