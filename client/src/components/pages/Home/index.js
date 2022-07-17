@@ -1,11 +1,11 @@
-import React , {useEffect} from 'react'
+import React  from 'react'
 import podcastApi from '../../Api';
 // import StyledContainer from '../../styledComponents/StyledContainer'
 import './style.scss'
 
 const Home = () => {
    const handleClick = async ()=>{
-    const {data} = await podcastApi.get('/test');
+    const data = await podcastApi.get('/test');
     console.log(data);
    }
   return (
