@@ -24,6 +24,14 @@ router.get('/:id/podcasts',async (req,res)=>{
         res.status(404).send(e.message)
     }
  })
+ .get('/test',async (req,res)=>{
+    try{
+        res.status(200).send('server connection ok');
+     
+    }catch(e){
+        res.status(404).send(e.message)
+    }
+ })
   
   
   

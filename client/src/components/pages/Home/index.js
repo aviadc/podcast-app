@@ -1,12 +1,18 @@
-import React from 'react'
+import React , {useEffect} from 'react'
+import axios from "axios";
 // import StyledContainer from '../../styledComponents/StyledContainer'
 import './style.scss'
 
 const Home = () => {
+   const handleClick = async ()=>{
+    const {data} = await axios.get('http://localhost:8080/api/user/test');
+    console.log(data);
+   }
   return (
     <>
       <div className='page-background-1'></div>
       <div className='home-container'>
+      <button onClick={handleClick}>click</button>
         <div className='home-inner'>
           <div className='home-inner-wrapper'>
             <h3>welcome to Podco!</h3>
