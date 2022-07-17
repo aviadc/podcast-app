@@ -33,6 +33,7 @@ const Profile = () => {
   }
 
   useEffect(() => {
+    console.log("in profile");
     async function innerUseEffect() {
       const token = localStorage.getItem('token');
       if (token) {
