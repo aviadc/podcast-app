@@ -1,11 +1,11 @@
 import React , {useEffect} from 'react'
-import axios from "axios";
+import podcastApi from '../../Api';
 // import StyledContainer from '../../styledComponents/StyledContainer'
 import './style.scss'
 
 const Home = () => {
    const handleClick = async ()=>{
-    const {data} = await axios.get('http://localhost:8080/api/user/test');
+    const {data} = await podcastApi.get('/test');
     console.log(data);
    }
   return (
