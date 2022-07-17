@@ -4,15 +4,20 @@ import podcastApi from '../../Api';
 import './style.scss'
 
 const Home = () => {
-   const handleClick = async ()=>{
+   const handleGet = async ()=>{
     const data = await podcastApi.get('/test');
+    console.log(data);
+   }
+   const handlePost = async ()=>{
+    const data = await podcastApi.post('/test');
     console.log(data);
    }
   return (
     <>
       <div className='page-background-1'></div>
       <div className='home-container'>
-      <button onClick={handleClick}>click</button>
+      <button onClick={handleGet}>get</button>
+      <button onClick={handlePost}>post</button>
         <div className='home-inner'>
           <div className='home-inner-wrapper'>
             <h3>welcome to Podco!</h3>
