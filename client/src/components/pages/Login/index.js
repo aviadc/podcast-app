@@ -29,6 +29,7 @@ const Login = () => {
   }
   return (
     <>
+    {console.log("in login")}
       <div className='page-background-1'> </div>
       <div className='login-container'>
         <div className='login-inner'>
