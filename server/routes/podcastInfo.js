@@ -25,6 +25,7 @@ router.get('/:id/podcasts',async (req,res)=>{
     }
  })
  .get('/test',async (req,res)=>{
+    console.log('in server get test');
     try{
         res.status(200).send('server connection get ok');
      
