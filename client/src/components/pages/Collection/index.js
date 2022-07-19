@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
 import PodcastItem from '../../PodcastItem';
-import Button from '../../styledComponents/Button';
-import "./style.scss"
+import "./collection.scss"
 
 const Collection = () => {
 
@@ -22,12 +21,10 @@ const Collection = () => {
   }
 
   return (
-    <>
-      <div className='page-background-2'></div>
       <div className='collection-container'>
         {state?.profile && <div className='collection-navbar'>
-          <Button onClick={handleAddPodcasts} fontSize="1rem">add podcasts</Button>
-          <Button onClick={goBackToProfilePage} fontSize="1rem">back to profile</Button>
+          <button onClick={handleAddPodcasts} fontSize="1rem">add podcasts</button>
+          <button onClick={goBackToProfilePage} fontSize="1rem">back to profile</button>
           <h3>collection size: {(state.collectionSize / 1000000).toFixed(2)} mb   (25mb max)</h3>
         </div>
         }
@@ -51,7 +48,6 @@ const Collection = () => {
           </div>
         </div>
       </div>
-    </>
   )
 }
 

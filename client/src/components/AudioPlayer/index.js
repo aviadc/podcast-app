@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import "./style.scss"
+import "./audioPlayer.scss"
 import { AiOutlineArrowLeft } from "react-icons/ai"
 import { AiOutlineArrowRight } from "react-icons/ai"
 import { FaPlay } from "react-icons/fa"

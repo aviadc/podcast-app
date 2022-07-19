@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import podcastApi from '../../Api';
-import Button from '../styledComponents/Button';
-import "./style.scss"
+import "./podcastsCollectionItem.scss"
 
 
 function PodcastCollectionItem(props) {
@@ -55,11 +54,11 @@ function PodcastCollectionItem(props) {
       </div>
       {props.profile &&
         <>
-          <div className='collection-delete-btn'><Button onClick={showDeleteWindow} fontSize="1rem">delete</Button></div>
+          <div className='collection-delete-btn'><button onClick={showDeleteWindow} fontSize="1rem">delete</button></div>
           <div className='delete-window' style={{ visibility: visibilty }}>
             <h2> ARE YOU SURE?</h2>
             <div>
-              <Button onClick={() => handleCollectionDelete(props.collectionId)} >YES</Button><Button onClick={handleVisibilty}>NO</Button>
+              <button onClick={() => handleCollectionDelete(props.collectionId)} >YES</button><button onClick={handleVisibilty}>NO</button>
             </div>
           </div>
         </>

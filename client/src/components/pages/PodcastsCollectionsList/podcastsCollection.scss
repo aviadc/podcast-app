@@ -1,0 +1,14 @@
+.collection-list-page{
+  min-height: 92vh;
+  margin-top: 8vh;
+  display: flex;
+  justify-content: center;
+}
+
+.collection-list-container{
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+

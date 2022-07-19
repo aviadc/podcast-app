@@ -1,21 +1,14 @@
-.page-background-2{
-  height: 100vh;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: -1;
-  background-image: url('../../../assets/images/background2.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; 
-}
 .collection-container{
-  height: 90vh;
+  min-height: 90vh;
   margin: 0 2rem;
   margin-top: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media screen and (max-width:500px) {
+    width: 75%;
+  }
 }
 
 .collection-navbar{
@@ -36,7 +29,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  overflow: scroll;
-  height: 50vh;
+  min-height: 50vh;
 }
 

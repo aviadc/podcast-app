@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import podcastApi from '../../../Api';
 import PodcastCollectionItem from '../../PodcastCollectionItem';
-import StyledContainer from '../../styledComponents/StyledContainer';
-import "./style.scss"
+import "./podcastsCollection.scss"
 
 
 const PodcastCollectionsList = () => {
@@ -11,13 +10,10 @@ const PodcastCollectionsList = () => {
 
   useEffect(() => {
     async function innerUseEffect() {
-      // console.log("im in podcasts page in use effect");
       const list = localStorage.getItem('collectionsList');
-      // console.log("list row 16", list);
       if (!list) {
         try {
           const { data } = await podcastApi.get('/podcasts');
-          // console.log("data row 20", data);
           localStorage.setItem('collectionsList', JSON.stringify(data));
           setCollectionsList(data);
         } catch (err) {
@@ -26,15 +22,13 @@ const PodcastCollectionsList = () => {
       } else {
         setCollectionsList(JSON.parse((localStorage.getItem('collectionsList'))));
       }
-      // console.log("list row 29", list);
-      // console.log("collection list row 30",collectionsList);
     }
     innerUseEffect();
   }, [])
 
 
   return (
-     <div className='page'>
+     <div className='collection-list-page'>
         <div className='collection-list-container'>
           {!!collectionsList.length && collectionsList.map((collection) => {
             return (

@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
 import podcastApi from '../../../Api';
 import Spinner from '../../Spinner';
-import Button from "../../styledComponents/Button"
-import "./style.scss"
+import "./addPodcasts.scss"
 
 
 const AddPodcasts = () => {
@@ -69,7 +68,6 @@ const AddPodcasts = () => {
 
   return (
     <>
-      <div className='page-background-2'></div>
       <div className='add-podcasts-container'>
         <div className='add-podcasts-inner'>
           <h2>add podcasts</h2>
@@ -77,14 +75,14 @@ const AddPodcasts = () => {
             Add Audio <input type="file" multiple onChange={(e) => setAudioFiles(Object.values(e.target.files))} accept='audio/*' />
           </div>
           <div>
-            <Button onClick={uploadAudio} fontSize="1.6rem">submit</Button>
+            <button onClick={uploadAudio} fontSize="1.6rem">submit</button>
           </div>
           <div>
             {isLoading ? <Spinner /> : null}
           </div>
           <div className='message-to-user'>{messageToUser}</div>
           <div>
-            <Button onClick={handleBackToCollection} fontSize="1.6rem">back to your collection</Button>
+            <button onClick={handleBackToCollection} fontSize="1.6rem">back to your collection</button>
           </div>
         </div>
       </div>

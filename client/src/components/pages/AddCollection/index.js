@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
 import podcastApi from '../../../Api';
 import Spinner from '../../Spinner';
-import Button from '../../styledComponents/Button';
-import "./style.scss"
+import "./addCollection.scss"
 
 const AddCollection = () => {
 
@@ -104,7 +103,6 @@ const AddCollection = () => {
 
   return (
     <>
-      <div className='page-background-1'></div>
       <div className='add-collection-container'>
         <div className='add-collection-inner'>
           <h2>add a collection</h2>
@@ -118,14 +116,14 @@ const AddCollection = () => {
             collection name: <input type='text' onChange={(e) => setCollectionTitle(e.target.value)} />
           </div>
           <div>
-            <Button onClick={uploadCollection} fontSize="1.6rem">ADD COLLECTION</Button>
+            <button onClick={uploadCollection} fontSize="1.6rem">ADD COLLECTION</button>
           </div>
           <div>
             {isLoading ? <Spinner /> : null}
           </div>
           <div className='message-to-user'>{messageToUser}</div>
           <div>
-            <Button onClick={handleBackToProfile} padding="10px" fontSize="1.6rem">back to profile</Button>
+            <button onClick={handleBackToProfile} padding="10px" fontSize="1.6rem">back to profile</button>
           </div>
         </div>
       </div>

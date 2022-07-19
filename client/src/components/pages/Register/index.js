@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import podcastApi from '../../../Api';
-import Button from '../../styledComponents/Button';
 import validator from 'validator';
-import "./style.scss"
+import "./register.scss"
 
 
 const Register = () => {
@@ -56,7 +55,6 @@ const Register = () => {
 
   return (
     <>
-      <div className='page-background-1'></div>
       <div className='register-container'>
         <div className='register-inner'>
           <div>
@@ -76,7 +74,7 @@ const Register = () => {
             </div>
             <div className='message-to-user'>{passwordError}</div>
             <div>
-              <Button onClick={submit} fontSize="1.6rem">submit</Button>
+              <button onClick={submit} fontSize="1.6rem">submit</button>
             </div>
           </form>
           <div>

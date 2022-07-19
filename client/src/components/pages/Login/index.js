@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import podcastApi from '../../../Api';
-import Button from "../../styledComponents/Button"
-import "./style.scss"
+import "./login.scss"
 
 
 const Login = () => {
@@ -29,8 +28,6 @@ const Login = () => {
   }
   return (
     <>
-    {console.log("in login")}
-      <div className='page-background-1'> </div>
       <div className='login-container'>
         <div className='login-inner'>
           <div>
@@ -45,7 +42,7 @@ const Login = () => {
             </div>
             <div className='message-to-user'>{messageToTheUser}</div>
             <div>
-              <Button onClick={handleLogin} fontSize="1.6rem">login</Button>
+              <button onClick={handleLogin} fontSize="1.6rem">login</button>
             </div>
           </form>
           <div className='not-have-a-user'>not have a user? please <Link to={'/register'}>Register</Link> </div>

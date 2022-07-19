@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import jwt from 'jsonwebtoken';
 import podcastApi from '../../../Api';
 import PodcastCollectionItem from "../../PodcastCollectionItem"
-import Button from '../../styledComponents/Button'
 import "./profile.scss"
 
 const Profile = () => {
@@ -73,10 +72,10 @@ const Profile = () => {
         <div className='profile-inner-top'>
           <h2 className='profile-inner-top-welcome'> WELCOME {profileData ? profileData.name : null}</h2>
           <div>
-            <Button onClick={handleAddCollection} fontSize="1rem" >add collection</Button>
+            <button onClick={handleAddCollection} fontSize="1rem" >add collection</button>
           </div>
           <div>
-            <Button onClick={logout} fontSize="1rem">log out</Button>
+            <button onClick={logout} fontSize="1rem">log out</button>
           </div>
         </div>
         <div className='profile-collections-list'>
