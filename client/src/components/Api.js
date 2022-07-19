@@ -1,9 +1,9 @@
 import axios from "axios";
 
-let myUrl = 'http://localhost:8080/api/user/'; //development
+let myUrl = 'http://localhost:8080/'; //development
 
 if (process.env.NODE_ENV === 'production') {
-  myUrl = '/api/user';
+  myUrl = '';
 }
 const podcastApi =  axios.create({
   baseURL: myUrl,
