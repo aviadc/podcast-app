@@ -1,12 +1,3 @@
-.profile-page{
-  min-height: 100vh;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: -1;
-  
-}
-
 .profile-container{
   margin: 0 2rem;
   margin-top: 10vh;
@@ -18,6 +9,11 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
+
+  .profile-inner-top-welcome{
+    font-size: 2rem;
+  }
 
 }
 

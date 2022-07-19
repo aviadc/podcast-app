@@ -37,4 +37,10 @@ button {
   font-weight: bold;
   font-size: 1.6rem;
   color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover{
+  color: wheat;
 }

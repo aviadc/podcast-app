@@ -15,11 +15,11 @@
 }
 
 .forward-backward:hover{
-  color: #FECD05;
+  color: wheat;
 }
 
 .play-pause{
-  background-color: #FECD05;
+  background-color: wheat;
   border: none;
   border-radius: 50%;
   width: 50px;
@@ -30,6 +30,10 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  &:hover{
+    color: #000;
+  }
 }
 
 .play{

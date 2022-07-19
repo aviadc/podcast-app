@@ -67,7 +67,6 @@ const Profile = () => {
 
   return (
     <>
-      <div className='profile-page'> </div>
       <div className='profile-container'>
         <div className='profile-inner-top'>
           <h2 className='profile-inner-top-welcome'> WELCOME {profileData ? profileData.name : null}</h2>
