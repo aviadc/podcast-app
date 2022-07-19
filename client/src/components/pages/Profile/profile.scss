@@ -4,10 +4,7 @@
   position: fixed;
   top: 0;
   z-index: -1;
-  background-image: url('../../../img/math-rblqmwB7kKk-unsplash.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; 
+  
 }
 
 .profile-container{
@@ -25,12 +22,10 @@
 
 .profile-collections-list{
   width: 100%;
-  overflow: scroll;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  overflow: scroll;
 }
 
 .collection-item-container{

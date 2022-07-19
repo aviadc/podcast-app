@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import podcastApi from '../../Api';
+import podcastApi from '../../../Api';
 import PodcastCollectionItem from '../../PodcastCollectionItem';
 import StyledContainer from '../../styledComponents/StyledContainer';
 import "./style.scss"
@@ -34,11 +34,8 @@ const PodcastCollectionsList = () => {
 
 
   return (
-    <>
-      <div className='page-background-1'></div>
-      <StyledContainer>
+     <div className='page'>
         <div className='collection-list-container'>
-          {/* {console.log("collection list in block",collectionsList)} */}
           {!!collectionsList.length && collectionsList.map((collection) => {
             return (
               <PodcastCollectionItem
@@ -52,8 +49,9 @@ const PodcastCollectionsList = () => {
             )
           })}
         </div>
-      </StyledContainer>
-    </>
+     </div>
+      
+    
   )
 }
 

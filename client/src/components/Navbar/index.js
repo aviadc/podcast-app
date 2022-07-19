@@ -1,56 +1,57 @@
-import React, { useState } from 'react'
-import {
-  NavbarContainer, NavbarRight, NavbarLeft, NavbarLink, NavbarNarrow, NavbarWide,
-  NavbarMenuButton, NavbarMenuNarrowLinksContainer, MenuButtonContainer
-} from './styledNavbar'
-import MenuIcon from '../MenuIcon'
-import logo from '../../img/brandPodco.JPG'
+import React, { useState } from "react";
+import { FaTimes, FaBars } from "react-icons/fa";
+import { Link } from 'react-router-dom'
+import "./navbar.scss";
 
 const Navbar = () => {
-  const [isMenueOpened, setIsMenueOpened] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenueOpened((curr) => !curr);
-  }
+
+  const [hamburgerClick, setHamburgerClick] = useState(false);
+
   return (
-    <NavbarContainer isMenueOpened={isMenueOpened}>
-      <NavbarLeft>
-        <img src={logo} alt='logo' style={{ width: '50px' }} />
-      </NavbarLeft>
-      <NavbarRight>
-        <NavbarWide>
-          <NavbarLink to={'/'}>
+    <nav className='navbar-container'>
+      <div className={hamburgerClick ? "nav-menu active" : "nav-menu"}>
+        <div>
+          <Link
+            to='/'
+            className='nav-link'
+            onClick={() => setHamburgerClick(!hamburgerClick)}
+          >
             Home
-          </NavbarLink>
-          <NavbarLink to={'/podcasts'}>
+          </Link>
+        </div>
+        <div>
+          <Link
+            to='/podcasts'
+            className='nav-link'
+            onClick={() => setHamburgerClick(!hamburgerClick)}
+          >
             Podcasts
-          </NavbarLink>
-          <NavbarLink to={'/profile'}>
-            profile
-          </NavbarLink>
-        </NavbarWide>
-        <NavbarNarrow>
-          <MenuButtonContainer>
-            <NavbarMenuButton onClick={toggleMenu}>
-              {isMenueOpened ? <div>X</div> : <MenuIcon />}
-            </NavbarMenuButton>
-          </MenuButtonContainer>
-          {isMenueOpened &&
-            <NavbarMenuNarrowLinksContainer>
-              <NavbarLink to={'/'} onClick={toggleMenu}>
-                Home
-              </NavbarLink>
-              <NavbarLink to={'/podcasts'} onClick={toggleMenu}>
-                Podcasts
-              </NavbarLink>
-              <NavbarLink to={'/profile'} onClick={toggleMenu}>
-                profile
-              </NavbarLink>
-            </NavbarMenuNarrowLinksContainer>}
-        </NavbarNarrow>
-      </NavbarRight>
-    </NavbarContainer>
-  )
-}
+          </Link>
+        </div>
+        <div>
+          <Link
+            to='/profile'
+            className='nav-link'
+            onClick={() => setHamburgerClick(!hamburgerClick)}
+          >
+            Profile
+          </Link>
+        </div>
 
-export default Navbar
+      </div>
+      <div
+        className='navbar-hamburger'
+        onClick={() => setHamburgerClick(!hamburgerClick)}
+      >
+        {hamburgerClick ? (
+          <FaTimes size={30} style={{ color: "#ffffff" }} />
+        ) : (
+          <FaBars size={30} style={{ color: "#ffffff" }} />
+        )}
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;

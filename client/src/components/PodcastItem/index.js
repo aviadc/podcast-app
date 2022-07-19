@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AudioPlayer from '../AudioPlayer';
 import { useNavigate, useLocation } from "react-router-dom";
-import podcastApi from '../Api';
+import podcastApi from '../../Api';
 import Button from '../styledComponents/Button';
 import "./style.scss"
 

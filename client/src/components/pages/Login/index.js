@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import podcastApi from '../../Api';
+import podcastApi from '../../../Api';
 import Button from "../../styledComponents/Button"
 import "./style.scss"
 

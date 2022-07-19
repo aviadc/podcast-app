@@ -5,10 +5,29 @@
 }
 
 body{
-  /* background-color: #E5AB00; */
- 
+  font-family: 'Raleway', sans-serif;
 }
 
 @media all and (max-width: 500px){
  
+}
+
+.app-page{
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.video-bg {
+  position: fixed;
+  z-index: -5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  min-height: 100%;
+  min-width: 100%;
+}
+
+.page{
+  /* min-height: 92vh; */
 }

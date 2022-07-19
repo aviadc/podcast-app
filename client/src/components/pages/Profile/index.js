@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import jwt from 'jsonwebtoken';
-import podcastApi from '../../Api';
+import podcastApi from '../../../Api';
 import PodcastCollectionItem from "../../PodcastCollectionItem"
 import Button from '../../styledComponents/Button'
-import "./style.scss"
+import "./profile.scss"
 
 const Profile = () => {
 
