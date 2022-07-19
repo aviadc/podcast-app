@@ -29,7 +29,7 @@ const PodcastCollectionsList = () => {
       console.log("list row 29", list);
       console.log("collection list row 30",collectionsList);
     }
-    // innerUseEffect();
+    innerUseEffect();
   }, [])
 
 
