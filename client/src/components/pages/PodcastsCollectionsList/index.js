@@ -38,6 +38,7 @@ const PodcastCollectionsList = () => {
       <div className='page-background-1'></div>
       <StyledContainer>
         <div className='collection-list-container'>
+          {console.log("collection list in block",collectionsList)}
           {/* {!!collectionsList.length && collectionsList.map((collection) => {
             return (
               <PodcastCollectionItem
